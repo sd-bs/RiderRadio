@@ -1,0 +1,289 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7375396516D0361600A74EF2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7375396416D0361600A74EF2 /* UIKit.framework */; };
+		7375396716D0361600A74EF2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7375396616D0361600A74EF2 /* Foundation.framework */; };
+		7375396916D0361600A74EF2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7375396816D0361600A74EF2 /* CoreGraphics.framework */; };
+		7375396F16D0361600A74EF2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7375396D16D0361600A74EF2 /* InfoPlist.strings */; };
+		7375397116D0361600A74EF2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7375397016D0361600A74EF2 /* main.m */; };
+		7375397516D0361600A74EF2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7375397416D0361600A74EF2 /* AppDelegate.m */; };
+		7375397716D0361600A74EF2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7375397616D0361600A74EF2 /* Default.png */; };
+		7375397916D0361600A74EF2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7375397816D0361600A74EF2 /* Default@2x.png */; };
+		7375397B16D0361600A74EF2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7375397A16D0361600A74EF2 /* Default-568h@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7375396116D0361600A74EF2 /* RiderRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RiderRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7375396416D0361600A74EF2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7375396616D0361600A74EF2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7375396816D0361600A74EF2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7375396C16D0361600A74EF2 /* RiderRadio-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RiderRadio-Info.plist"; sourceTree = "<group>"; };
+		7375396E16D0361600A74EF2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7375397016D0361600A74EF2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7375397216D0361600A74EF2 /* RiderRadio-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RiderRadio-Prefix.pch"; sourceTree = "<group>"; };
+		7375397316D0361600A74EF2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7375397416D0361600A74EF2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7375397616D0361600A74EF2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		7375397816D0361600A74EF2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		7375397A16D0361600A74EF2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7375395E16D0361500A74EF2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7375396516D0361600A74EF2 /* UIKit.framework in Frameworks */,
+				7375396716D0361600A74EF2 /* Foundation.framework in Frameworks */,
+				7375396916D0361600A74EF2 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7375395816D0361500A74EF2 = {
+			isa = PBXGroup;
+			children = (
+				7375396A16D0361600A74EF2 /* RiderRadio */,
+				7375396316D0361600A74EF2 /* Frameworks */,
+				7375396216D0361600A74EF2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7375396216D0361600A74EF2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7375396116D0361600A74EF2 /* RiderRadio.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7375396316D0361600A74EF2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7375396416D0361600A74EF2 /* UIKit.framework */,
+				7375396616D0361600A74EF2 /* Foundation.framework */,
+				7375396816D0361600A74EF2 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7375396A16D0361600A74EF2 /* RiderRadio */ = {
+			isa = PBXGroup;
+			children = (
+				7375397316D0361600A74EF2 /* AppDelegate.h */,
+				7375397416D0361600A74EF2 /* AppDelegate.m */,
+				7375396B16D0361600A74EF2 /* Supporting Files */,
+			);
+			path = RiderRadio;
+			sourceTree = "<group>";
+		};
+		7375396B16D0361600A74EF2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7375396C16D0361600A74EF2 /* RiderRadio-Info.plist */,
+				7375396D16D0361600A74EF2 /* InfoPlist.strings */,
+				7375397016D0361600A74EF2 /* main.m */,
+				7375397216D0361600A74EF2 /* RiderRadio-Prefix.pch */,
+				7375397616D0361600A74EF2 /* Default.png */,
+				7375397816D0361600A74EF2 /* Default@2x.png */,
+				7375397A16D0361600A74EF2 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7375396016D0361500A74EF2 /* RiderRadio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7375397E16D0361600A74EF2 /* Build configuration list for PBXNativeTarget "RiderRadio" */;
+			buildPhases = (
+				7375395D16D0361500A74EF2 /* Sources */,
+				7375395E16D0361500A74EF2 /* Frameworks */,
+				7375395F16D0361500A74EF2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RiderRadio;
+			productName = RiderRadio;
+			productReference = 7375396116D0361600A74EF2 /* RiderRadio.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7375395916D0361500A74EF2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Fabien Moussavi";
+			};
+			buildConfigurationList = 7375395C16D0361500A74EF2 /* Build configuration list for PBXProject "RiderRadio" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7375395816D0361500A74EF2;
+			productRefGroup = 7375396216D0361600A74EF2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7375396016D0361500A74EF2 /* RiderRadio */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7375395F16D0361500A74EF2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7375396F16D0361600A74EF2 /* InfoPlist.strings in Resources */,
+				7375397716D0361600A74EF2 /* Default.png in Resources */,
+				7375397916D0361600A74EF2 /* Default@2x.png in Resources */,
+				7375397B16D0361600A74EF2 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7375395D16D0361500A74EF2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7375397116D0361600A74EF2 /* main.m in Sources */,
+				7375397516D0361600A74EF2 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7375396D16D0361600A74EF2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7375396E16D0361600A74EF2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7375397C16D0361600A74EF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7375397D16D0361600A74EF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7375397F16D0361600A74EF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RiderRadio/RiderRadio-Prefix.pch";
+				INFOPLIST_FILE = "RiderRadio/RiderRadio-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		7375398016D0361600A74EF2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RiderRadio/RiderRadio-Prefix.pch";
+				INFOPLIST_FILE = "RiderRadio/RiderRadio-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7375395C16D0361500A74EF2 /* Build configuration list for PBXProject "RiderRadio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7375397C16D0361600A74EF2 /* Debug */,
+				7375397D16D0361600A74EF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7375397E16D0361600A74EF2 /* Build configuration list for PBXNativeTarget "RiderRadio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7375397F16D0361600A74EF2 /* Debug */,
+				7375398016D0361600A74EF2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7375395916D0361500A74EF2 /* Project object */;
+}
