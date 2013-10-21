@@ -80,10 +80,14 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     // Set the volume slider button skin
-    if ([self isKindOfClass:OnAirViewController.class])
+    if ([self isKindOfClass:OnAirViewController.class]) {
         [[UISlider appearanceWhenContainedIn:[MPVolumeView class], nil] setThumbImage:[UIImage imageNamed:@"btn_volume_cursor.png"] forState:UIControlStateNormal];
-    else
+        [[UISlider appearanceWhenContainedIn:[MPVolumeView class], nil] setThumbImage:[UIImage imageNamed:@"btn_volume_cursor.png"] forState:UIControlStateHighlighted];
+    }
+    else {
         [[UISlider appearanceWhenContainedIn:[MPVolumeView class], nil] setThumbImage:[UIImage imageNamed:@"btn_volume_cursor_negatif.png"] forState:UIControlStateNormal];
+        [[UISlider appearanceWhenContainedIn:[MPVolumeView class], nil] setThumbImage:[UIImage imageNamed:@"btn_volume_cursor_negatif.png"] forState:UIControlStateHighlighted];
+    }
     
     // Select the mute button if the volume is down
     if (0.f == [[MPMusicPlayerController applicationMusicPlayer] volume]) {
