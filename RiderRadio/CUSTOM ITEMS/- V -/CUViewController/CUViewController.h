@@ -21,7 +21,7 @@
 
 //**/ IBOutlets
 // Backing items
-@property (nonatomic, strong) IBOutlet UIView                       *backing_View;
+//@property (nonatomic, strong) IBOutlet UIView                       *backing_View;
 @property (nonatomic, strong) IBOutlet UIButton                     *back_Btn;
 @property (nonatomic, strong) IBOutlet UIWebView                    *webView;
 @property (nonatomic, strong) IBOutlet UIView                       *aivBackground;
@@ -45,7 +45,7 @@
 
 //**/ Properties
 // PanGestureRecognizer
-@property (nonatomic, strong) UIPanGestureRecognizer                *recognizer;
+//@property (nonatomic, strong) UIPanGestureRecognizer                *recognizer;
 
 // Mounts
 @property (nonatomic, strong) MountsArrayModel                      *mountsArrayModel;

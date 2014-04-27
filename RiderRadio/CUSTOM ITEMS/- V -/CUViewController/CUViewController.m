@@ -50,14 +50,18 @@
     // UI
     [self.aivBackground.layer setCornerRadius:5.f];
     
+    // Status bar
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    // ****** Useless now *****//
     // PanGestureRecognizer
-    self.recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan)];
-    self.recognizer.maximumNumberOfTouches = 1;
-    [self.backing_View addGestureRecognizer:self.recognizer];
+//    self.recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan)];
+//    self.recognizer.maximumNumberOfTouches = 1;
+//    [self.backing_View addGestureRecognizer:self.recognizer];
     
     // On Air
     // Backing view
-    DEBUG_LAYER(self.volume_View, blackColor)
+//    DEBUG_LAYER(self.volume_View, blackColor)
     
     // Volume slider
     [self.mpVolumeView setShowsRouteButton:NO];
@@ -65,10 +69,10 @@
     
     // available since iOS 5
     [[UISlider appearanceWhenContainedIn:
-      [MPVolumeView class], nil] setMinimumTrackImage:[[UIImage imageNamed:@"img_minTrack.png"]
+      [MPVolumeView class], nil] setMinimumTrackImage:[[UIImage imageNamed:@"img_minTrack"]
                                                        resizableImageWithCapInsets:UIEdgeInsetsMake(3, 13, 3, 13)] forState:UIControlStateNormal];
     [[UISlider appearanceWhenContainedIn:
-      [MPVolumeView class], nil] setMaximumTrackImage:[[UIImage imageNamed:@"img_maxTrack.png"]
+      [MPVolumeView class], nil] setMaximumTrackImage:[[UIImage imageNamed:@"img_maxTrack"]
                                                        resizableImageWithCapInsets:UIEdgeInsetsMake(3, 13, 3, 13)] forState:UIControlStateNormal];
     
     // Load the WebView
@@ -81,12 +85,12 @@
 {
     // Set the volume slider button skin
     if ([self isKindOfClass:OnAirViewController.class]) {
-        [[UISlider appearanceWhenContainedIn:[MPVolumeView class], nil] setThumbImage:[UIImage imageNamed:@"btn_volume_cursor.png"] forState:UIControlStateNormal];
-        [[UISlider appearanceWhenContainedIn:[MPVolumeView class], nil] setThumbImage:[UIImage imageNamed:@"btn_volume_cursor.png"] forState:UIControlStateHighlighted];
+        [[UISlider appearanceWhenContainedIn:[MPVolumeView class], nil] setThumbImage:[UIImage imageNamed:@"btn_volume_cursor"] forState:UIControlStateNormal];
+        [[UISlider appearanceWhenContainedIn:[MPVolumeView class], nil] setThumbImage:[UIImage imageNamed:@"btn_volume_cursor"] forState:UIControlStateHighlighted];
     }
     else {
-        [[UISlider appearanceWhenContainedIn:[MPVolumeView class], nil] setThumbImage:[UIImage imageNamed:@"btn_volume_cursor_negatif.png"] forState:UIControlStateNormal];
-        [[UISlider appearanceWhenContainedIn:[MPVolumeView class], nil] setThumbImage:[UIImage imageNamed:@"btn_volume_cursor_negatif.png"] forState:UIControlStateHighlighted];
+        [[UISlider appearanceWhenContainedIn:[MPVolumeView class], nil] setThumbImage:[UIImage imageNamed:@"btn_volume_cursor_negatif"] forState:UIControlStateNormal];
+        [[UISlider appearanceWhenContainedIn:[MPVolumeView class], nil] setThumbImage:[UIImage imageNamed:@"btn_volume_cursor_negatif"] forState:UIControlStateHighlighted];
     }
     
     // Select the mute button if the volume is down
@@ -195,12 +199,12 @@
 //**/
 - (void)setTimeLineUILabelWidth
 {
-    float width = [self.timeline_Lbl.text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:14.f]
-                                     constrainedToSize:CGSizeMake(9999.f, self.timeline_Lbl.frame.size.height)
-                                         lineBreakMode:NSLineBreakByWordWrapping].width;
     [self.timeline_Lbl setFrame:CGRectMake(self.timeline_Lbl.frame.origin.x,
                                            self.timeline_Lbl.frame.origin.y,
-                                           width,
+                                           [self.timeline_Lbl.text boundingRectWithSize:CGSizeMake(9999.f, self.timeline_Lbl.frame.size.height)
+                                                                                options:NSStringDrawingUsesFontLeading
+                                                                             attributes:@{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue" size:14.f]}
+                                                                                context:nil].size.width,
                                            self.timeline_Lbl.frame.size.height)];
 }
 
@@ -216,7 +220,7 @@
      [NSURLRequest requestWithURL:
       [NSURL URLWithString:
        [[URL_MOUNTS_THUMBNAIL stringByAppendingFormat:@"%@.jpg", mountsInfo] stringByReplacingOccurrencesOfString:@" " withString:@"%20"]]]
-                                 placeholderImage:[UIImage imageNamed:@"img_placeholder.png"]
+                                 placeholderImage:[UIImage imageNamed:@"img_placeholder"]
                                           success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
                                               NSLog(@"Succeed");
                                               NSLog(@"Image size width: %f height: %f", image.size.width, image.size.height);
@@ -396,7 +400,7 @@
     // Add the image to the mail
     [mail addAttachmentData:UIImageJPEGRepresentation(self.currentSound_Img.image, 1) mimeType:@"image/jpeg" fileName:[NSString stringWithFormat:@"%@.jpg", [self getCurrentMountTitle]]];
     
-    [self presentModalViewController:mail animated:YES];
+    [self presentViewController:mail animated:YES completion:NULL];
 }
 
 
@@ -534,7 +538,7 @@
         [vc addURL:url];
         // Setting a Completing Handler
         [vc setCompletionHandler:^(TWTweetComposeViewControllerResult result) {
-            [self dismissModalViewControllerAnimated:YES];
+            [self dismissViewControllerAnimated:YES completion:NULL];
         }];
         // Display Tweet Compose View Controller Modally
         [self presentViewController:vc animated:YES completion:nil];
@@ -645,23 +649,23 @@
 //                                       PanGestureRecognizer                                         //
 //====================================================================================================//
 //**/
-- (void)handlePan
-{    
-    // Touch began
-    if (self.recognizer.state == UIGestureRecognizerStateBegan) {
-        // ... nothing to do
-    }
-    // Touch changing
-    else if (self.recognizer.state == UIGestureRecognizerStateChanged) {
-        // Sensibility = border at 60 px from left
-        if (60.f < [self.recognizer translationInView:self.backing_View].x)
-            [self popViewController:nil];
-    }
-    // Touch ended
-    else if (self.recognizer.state == UIGestureRecognizerStateEnded) {
-       // ... nothing to do
-    }
-}
+//- (void)handlePan
+//{    
+//    // Touch began
+//    if (self.recognizer.state == UIGestureRecognizerStateBegan) {
+//        // ... nothing to do
+//    }
+//    // Touch changing
+//    else if (self.recognizer.state == UIGestureRecognizerStateChanged) {
+//        // Sensibility = border at 60 px from left
+//        if (60.f < [self.recognizer translationInView:self.backing_View].x)
+//            [self popViewController:nil];
+//    }
+//    // Touch ended
+//    else if (self.recognizer.state == UIGestureRecognizerStateEnded) {
+//       // ... nothing to do
+//    }
+//}
 
 
 /////////////////////

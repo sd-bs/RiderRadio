@@ -64,8 +64,14 @@
 {
     [super viewWillAppear:animated];
     
+    // Enable iOS 7 back gesture
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+        self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+    }
+    
     // Resize the tableView content inset
-    [self.tableView setContentInset:UIEdgeInsetsMake(0.f, 0.f, self.tableView.frame.size.height - 55.f, 0.f)];
+    [self.tableView setContentInset:UIEdgeInsetsMake(0.f, 0.f, self.tableView.frame.size.height - 70.f, 0.f)];
 }
 
 
@@ -137,7 +143,7 @@
 //**/
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 55.f;
+    return 70.f;
 }
 
 //**/
@@ -165,27 +171,27 @@
         switch (indexPath.row) {
             case On_Air:
                 [cell.background_View setBackgroundColor:colorDarkGrey];
-                [cell.sectionIcon_Imv setImage:[UIImage imageNamed:@"cell_icon_OnAir.png"]];
+                [cell.sectionIcon_Imv setImage:[UIImage imageNamed:@"cell_icon_OnAir"]];
                 break;
                 
             case Mixes:
                 [cell.background_View setBackgroundColor:colorBurgundy];
-                [cell.sectionIcon_Imv setImage:[UIImage imageNamed:@"cell_icon_Mixes.png"]];
+                [cell.sectionIcon_Imv setImage:[UIImage imageNamed:@"cell_icon_Mixes"]];
                 break;
                 
             case Replays:
                 [cell.background_View setBackgroundColor:colorAniseGreen];
-                [cell.sectionIcon_Imv setImage:[UIImage imageNamed:@"cell_icon_Replays.png"]];
+                [cell.sectionIcon_Imv setImage:[UIImage imageNamed:@"cell_icon_Replays"]];
                 break;
                 
             case Fresh_news:
                 [cell.background_View setBackgroundColor:colorGold];
-                [cell.sectionIcon_Imv setImage:[UIImage imageNamed:@"cell_icon_Freshnews.png"]];
+                [cell.sectionIcon_Imv setImage:[UIImage imageNamed:@"cell_icon_Freshnews"]];
                 break;
                 
             case Infos:
                 [cell.background_View setBackgroundColor:colorGrey];
-                [cell.sectionIcon_Imv setImage:[UIImage imageNamed:@"cell_icon_Infos.png"]];
+                [cell.sectionIcon_Imv setImage:[UIImage imageNamed:@"cell_icon_Infos"]];
                 break;
         }
     }
@@ -209,31 +215,31 @@
         case On_Air:
             [self.topImage_Btn setTag:On_Air];
             [self.topImage_Btn setBackgroundColor:colorDarkGrey];
-            [self.topImage_Btn setImage:[UIImage imageNamed:@"btn_OnAir.png"] forState:UIControlStateNormal];
+            [self.topImage_Btn setImage:[UIImage imageNamed:@"btn_OnAir"] forState:UIControlStateNormal];
             break;
             
         case Mixes:
             [self.topImage_Btn setTag:Mixes];
             [self.topImage_Btn setBackgroundColor:colorBurgundy];
-            [self.topImage_Btn setImage:[UIImage imageNamed:@"btn_Mixes.png"] forState:UIControlStateNormal];
+            [self.topImage_Btn setImage:[UIImage imageNamed:@"btn_Mixes"] forState:UIControlStateNormal];
             break;
             
         case Replays:
             [self.topImage_Btn setTag:Replays];
             [self.topImage_Btn setBackgroundColor:colorAniseGreen];
-            [self.topImage_Btn setImage:[UIImage imageNamed:@"btn_Replays.png"] forState:UIControlStateNormal];
+            [self.topImage_Btn setImage:[UIImage imageNamed:@"btn_Replays"] forState:UIControlStateNormal];
             break;
             
         case Fresh_news:
             [self.topImage_Btn setTag:Fresh_news];
             [self.topImage_Btn setBackgroundColor:colorGold];
-            [self.topImage_Btn setImage:[UIImage imageNamed:@"btn_Freshnews.png"] forState:UIControlStateNormal];
+            [self.topImage_Btn setImage:[UIImage imageNamed:@"btn_Freshnews"] forState:UIControlStateNormal];
             break;
             
         case Infos:
             [self.topImage_Btn setTag:Infos];
             [self.topImage_Btn setBackgroundColor:colorGrey];
-            [self.topImage_Btn setImage:[UIImage imageNamed:@"btn_Infos.png"] forState:UIControlStateNormal];
+            [self.topImage_Btn setImage:[UIImage imageNamed:@"btn_Infos"] forState:UIControlStateNormal];
             break;
             
         default:
