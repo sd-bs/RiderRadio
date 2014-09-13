@@ -32,6 +32,7 @@
     self = [super init];
     if (self) {
         self.oldVolume = .25f;
+        self.currentMountsTitle = @"";
     }
     return self;
 }
@@ -52,12 +53,6 @@
     
     // Status bar
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    
-    // ****** Useless now *****//
-    // PanGestureRecognizer
-//    self.recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan)];
-//    self.recognizer.maximumNumberOfTouches = 1;
-//    [self.backing_View addGestureRecognizer:self.recognizer];
     
     // On Air
     // Backing view
@@ -174,7 +169,7 @@
 {
     if (self.player) {
         if (!self.player.isPreparedToPlay)
-            [self.player setContentURL:[NSURL URLWithString:URL_RIDER_RADIO_STREAMING_FLUX]];
+            [self.player setContentURL:[NSURL URLWithString:URL_RIDER_RADIO_STREAMING_FLUX_WINAMP]];
         [self.player play];
     }
 }
@@ -183,7 +178,7 @@
 - (void)fillCurrentMountInformations
 {
     // Fill the timeline label and resize it
-    [self.timeline_Lbl setText:[NSString stringWithString:[self getCurrentMountTitle]]];
+    [self.timeline_Lbl setText:self.currentMountsTitle];
     
     // Set the timeline_Lbl label width
     [self setTimeLineUILabelWidth];
@@ -192,7 +187,7 @@
     [self scrollTimelineLabel];
     
     // Load the current mount thumbnail only if it's necessary
-    if (![self.previousMountsTitle isEqualToString:[self getCurrentMountTitle]])
+    if (![self.previousMountsTitle isEqualToString:self.currentMountsTitle])
         [self loadCurrentMountThumbnail];
 }
 
@@ -211,62 +206,32 @@
 //**/
 - (void)loadCurrentMountThumbnail
 {
-    // Get the current Mount
-    NSString *mountsInfo = [self getCurrentMountTitle];
+    // Get the current Mount title
+//    NSString *mountsInfo = [self getCurrentMountTitle];
+    NSString *mountsTitle = self.currentMountsTitle;
     
     // Set the current mount thumbnail
     __block UIImageView *imgView = self.currentSound_Img;
     [self.currentSound_Img setImageWithURLRequest:
      [NSURLRequest requestWithURL:
       [NSURL URLWithString:
-       [[URL_MOUNTS_THUMBNAIL stringByAppendingFormat:@"%@.jpg", mountsInfo] stringByReplacingOccurrencesOfString:@" " withString:@"%20"]]]
-                                 placeholderImage:[UIImage imageNamed:@"img_placeholder"]
-                                          success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                              NSLog(@"Succeed");
-                                              NSLog(@"Image size width: %f height: %f", image.size.width, image.size.height);
-                                              // TEST
-                                              // ... utiliser un UIGraphicContext pour redessiner l'image en 300x300
-                                              // FIN TEST
-                                              [imgView setImage:image];
-                                          } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-                                              NSLog(@"Failed:");
-                                              NSLog(@"%@", [[URL_MOUNTS_THUMBNAIL stringByAppendingFormat:@"%@.jpg", mountsInfo] stringByReplacingOccurrencesOfString:@" " withString:@"%20"]);
-                                          }];
+       [[URL_RIDER_RADIO_CURRENT_SONG_JACKET stringByAppendingFormat:@"%@.jpg", mountsTitle] stringByReplacingOccurrencesOfString:@" " withString:@"%20"]]]
+                                    placeholderImage:[UIImage imageNamed:@"img_placeholder"]
+                                            success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                                NSLog(@"Succeed");
+                                                NSLog(@"Image size width: %f height: %f", image.size.width, image.size.height);
+                                                // TEST
+                                                // ... utiliser un UIGraphicContext pour redessiner l'image en 300x300
+                                                // FIN TEST
+                                                [imgView setImage:image];
+                                            } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+                                                NSLog(@"Failed:");
+                                                NSLog(@"%@", [[URL_RIDER_RADIO_CURRENT_SONG_JACKET stringByAppendingFormat:@"%@.jpg", mountsTitle] stringByReplacingOccurrencesOfString:@" " withString:@"%20"]);
+                                            }];
     
     // Save the current mount title
-    self.previousMountsTitle = mountsInfo;
+    self.previousMountsTitle = mountsTitle;
     NSLog(@"-- FIN --");
-}
-
-//**/ The current string format is: <Artiste> - <Title>
-- (NSString *)getCurrentMountTitle
-{
-    // Call the getCurrentMount method to update the current Mount
-    [self getCurrentMount];
-    
-    if (self.currentMount)
-        return self.currentMount.title;
-    return @"";
-}
-
-//**/ Get the current Mount from the last Mounts list loaded every 10 sec.
-- (void)getCurrentMount
-{
-    BOOL hasCurrentMountBeenUpdated = NO;
-    
-    // Get the current Mount
-    if (self.mounts_MutableArray) {
-        for (Mounts *mount in self.mounts_MutableArray) {
-            if ([mount.mount isEqualToString:PLAYING_MOUNT_TAG]) {
-                self.currentMount = mount;
-                hasCurrentMountBeenUpdated = YES;
-            }
-        }
-    }
-    
-    // Set the currentMount variable to nil, just to indicate that we haven't the relevant information
-    if (!hasCurrentMountBeenUpdated)
-        self.currentMount = nil;
 }
 
 
@@ -276,72 +241,32 @@
 //                                             WebService                                             //
 //====================================================================================================//
 //**/
-- (void)getCurrentMountsList
+- (void)getCurrentMountInfos
 {
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:URL_MOUNTS_FLUX_JSON]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:URL_RIDER_RADIO_CURRENT_SONG_INFO]];
     
     // Set to no caching
     [request setCachePolicy:NSURLRequestReloadIgnoringLocalCacheData];
     
-    // Could be set to "text/json" (cf. Tony)
-    [AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObject:@"text/plain"]];
-    [AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObject:@"text/html"]];
-    
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        // Reset the bool to manage the alert view about getting mounts infos
-        self.isFirstAlert = YES;
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, NSData *responseObject) {
         
-        // Save the MountsArrayModel
-        self.mountsArrayModel = [JSON FillObject:[[MountsArrayModel alloc] init]];
-        self.mounts_MutableArray = [[NSMutableArray alloc] initWithArray:[self.mountsArrayModel.mounts array]];
+        self.currentMountsTitle = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         [self fillCurrentMountInformations];
         
-        //
-        // Logs...
-        //
-        //        NSLog(@"Mounts count: %d", self.mounts_MutableArray.count);
-        //        NSLog(@"JSON: %@", JSON);
-        //
-        //        if (self.mounts_MutableArray) {
-        //            for (Mounts *mount in self.mounts_MutableArray) {
-        //                if ([mount.mount isEqualToString:PLAYING_MOUNT_TAG]) {
-        //                    NSLog(@"The current Mount: %@", mount.title);
-        //                }
-        //            }
-        //        }
-        //
-        //        int index = 0;
-        //        for (Mounts *mount in self.mounts_MutableArray) {
-        //            NSLog(@"Position: %d", index);
-        //            NSLog(@"%@", mount.title);
-        //            ++index;
-        //        }
-        
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"ERROR: %@", error.description);
-        
-        if (self.isFirstAlert) {
-            self.isFirstAlert = NO;
-            // Alert view for the user
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"")
-                                                            message:NSLocalizedString(@"Error_get_data", @"")
-                                                           delegate:self
-                                                  cancelButtonTitle:NSLocalizedString(@"Ok", @"")
-                                                  otherButtonTitles:nil, nil];
-            [alert show];
-        }
     }];
     [operation start];
     
-    // Auto recall
-    [NSTimer scheduledTimerWithTimeInterval:10.f target:self selector:@selector(getCurrentMountsList) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:10.f target:self selector:@selector(getCurrentMountInfos) userInfo:nil repeats:NO];
 }
 
 
 //////////////////////
 #pragma mark - Sharing
 //====================================================================================================//
-//                                            Sharing                                                //
+//                                            Sharing                                                 //
 //====================================================================================================//
 //**/
 - (IBAction)share:(UIButton *)button
@@ -365,14 +290,14 @@
 - (void)shareWithFaceBook
 {
     NSLog(@"Facebook sharing...");
-    [self openFacebookSessionAndShareMounts:[self getCurrentMountTitle]];
+    [self openFacebookSessionAndShareMounts:self.currentMountsTitle];
 }
 
 //**/
 - (void)shareWithTwitter
 {
     NSLog(@"Twitter sharing...");
-    [self openTwitterSessionAndShareMounts:[self getCurrentMountTitle]];
+    [self openTwitterSessionAndShareMounts:self.currentMountsTitle];
 }
 
 //**/
@@ -386,7 +311,7 @@
     
     // Get the mounts info for the body message
     // (The current string format is: <Artiste> - <Title>)
-    NSArray *mountsInfo = [[self getCurrentMountTitle] componentsSeparatedByString:@" - "];
+    NSArray *mountsInfo = [self.currentMountsTitle componentsSeparatedByString:@" - "];
     if (2 <= mountsInfo.count) {
         NSString *msgBody = [NSString stringWithFormat:@"%@\n%@ %@\n%@ %@",
                              NSLocalizedString(@"Heard_on_RR", @""),
@@ -398,7 +323,7 @@
     }
     
     // Add the image to the mail
-    [mail addAttachmentData:UIImageJPEGRepresentation(self.currentSound_Img.image, 1) mimeType:@"image/jpeg" fileName:[NSString stringWithFormat:@"%@.jpg", [self getCurrentMountTitle]]];
+    [mail addAttachmentData:UIImageJPEGRepresentation(self.currentSound_Img.image, 1) mimeType:@"image/jpeg" fileName:[NSString stringWithFormat:@"%@.jpg", self.currentMountsTitle]];
     
     [self presentViewController:mail animated:YES completion:NULL];
 }
@@ -429,28 +354,27 @@
 //**/ IBAction call by the Facebook button on the central panel
 - (void)openFacebookSessionAndShareMounts:(NSString *)mountsName
 {
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    if (!appDelegate.fbSession.isOpen) {
-        // Created a new session if it doesn't still exist
-        if (!appDelegate.fbSession || appDelegate.fbSession.state != FBSessionStateCreated) {
-            appDelegate.fbSession = [[FBSession alloc] init];
-        }
-        
-        // even though we had a cached token, we need to login to make the session usable
-        [appDelegate.fbSession openWithCompletionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
-            [self shareCurrentMountsOnFacebook:mountsName];
-        }];
-    }
-    else {
-        [self shareCurrentMountsOnFacebook:mountsName];
-    }
+//    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+//    if (!appDelegate.fbSession.isOpen) {
+//        // Created a new session if it doesn't still exist
+//        if (!appDelegate.fbSession || appDelegate.fbSession.state != FBSessionStateCreated) {
+//            appDelegate.fbSession = [[FBSession alloc] init];
+//        }
+//        
+//        // even though we had a cached token, we need to login to make the session usable
+//        [appDelegate.fbSession openWithCompletionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+//            [self shareCurrentMountsOnFacebook:mountsName];
+//        }];
+//    }
+//    else {
+//        [self shareCurrentMountsOnFacebook:mountsName];
+//    }
 }
 
 //**/
 - (void)shareCurrentMountsOnFacebook:(NSString *)mountsName
 {
-    NSLog(@"%@", [[URL_MOUNTS_THUMBNAIL stringByAppendingFormat:@"%@.jpg", mountsName]
-                  stringByReplacingOccurrencesOfString:@" " withString:@"%20"]);
+    NSLog(@"%@", [[URL_RIDER_RADIO_CURRENT_SONG_JACKET stringByAppendingFormat:@"%@.jpg", mountsName] stringByReplacingOccurrencesOfString:@" " withString:@"%20"]);
     
     // OBJECT
     //
@@ -491,14 +415,14 @@
     // **/////*****///******///*****//** //
     // Very simple share (temp)
     // **/////*****///******///*****//** //
-    [FBDialogs presentShareDialogWithLink:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_RIDER_RADIO_FRESHNEWS, [[NSLocale preferredLanguages] objectAtIndex:0]]]
-                                  handler:^(FBAppCall *call, NSDictionary *results, NSError *error) {
-                                      if(error) {
-                                          NSLog(@"Error: %@", error.description);
-                                      } else {
-                                          NSLog(@"Success!");
-                                      }
-                                  }];
+//    [FBDialogs presentShareDialogWithLink:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_RIDER_RADIO_FRESHNEWS, [[NSLocale preferredLanguages] objectAtIndex:0]]]
+//                                  handler:^(FBAppCall *call, NSDictionary *results, NSError *error) {
+//                                      if(error) {
+//                                          NSLog(@"Error: %@", error.description);
+//                                      } else {
+//                                          NSLog(@"Success!");
+//                                      }
+//                                  }];
     // **/////*****///******///*****//** //
 }
 
@@ -531,7 +455,7 @@
         [vc setInitialText:[NSLocalizedString(@"Heard_on_RR_Twitter", @"") stringByAppendingFormat:@"\n%@", mountName]];
         // Adding an Image
         UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:
-                                                 [NSURL URLWithString:[[URL_MOUNTS_THUMBNAIL stringByAppendingFormat:@"%@.jpg", mountName] stringByReplacingOccurrencesOfString:@" " withString:@"%20"]]]];
+                                                 [NSURL URLWithString:[[URL_RIDER_RADIO_CURRENT_SONG_JACKET stringByAppendingFormat:@"%@.jpg", mountName] stringByReplacingOccurrencesOfString:@" " withString:@"%20"]]]];
         [vc addImage:image];
         // Adding a URL
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_RIDER_RADIO_FRESHNEWS, [[NSLocale preferredLanguages] objectAtIndex:0]]];
@@ -641,31 +565,6 @@
         }];
     }
 }
-
-
-///////////////////////////////////
-#pragma mark - PanGestureRecognizer
-//====================================================================================================//
-//                                       PanGestureRecognizer                                         //
-//====================================================================================================//
-//**/
-//- (void)handlePan
-//{    
-//    // Touch began
-//    if (self.recognizer.state == UIGestureRecognizerStateBegan) {
-//        // ... nothing to do
-//    }
-//    // Touch changing
-//    else if (self.recognizer.state == UIGestureRecognizerStateChanged) {
-//        // Sensibility = border at 60 px from left
-//        if (60.f < [self.recognizer translationInView:self.backing_View].x)
-//            [self popViewController:nil];
-//    }
-//    // Touch ended
-//    else if (self.recognizer.state == UIGestureRecognizerStateEnded) {
-//       // ... nothing to do
-//    }
-//}
 
 
 /////////////////////

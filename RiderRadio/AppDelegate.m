@@ -13,10 +13,10 @@
 @implementation AppDelegate
 
 //**/ Facebook
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
-    return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication withSession:self.fbSession];
-}
+//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+//{
+//    return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication withSession:self.fbSession];
+//}
 
 //**/
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -83,7 +83,7 @@
         [self restartPlaying];
     
     // Facebook
-    [FBAppCall handleDidBecomeActiveWithSession:self.fbSession];
+//    [FBAppCall handleDidBecomeActiveWithSession:self.fbSession];
 }
 
 //**/
@@ -92,7 +92,7 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     
     // Facebook
-    [self.fbSession close];
+//    [self.fbSession close];
 }
 
 //**/

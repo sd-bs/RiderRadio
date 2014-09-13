@@ -8,6 +8,7 @@
 
 
 #import "OnAirViewController.h"
+#import "Parallax.h"
 
 
 @interface OnAirViewController ()
@@ -52,10 +53,16 @@
     
     // Get Mounts information
     self.timelineScrollingEnabled = YES;
-    [self getCurrentMountsList];
+    [self getCurrentMountInfos];
     
     // Translate the view
     [ViewTranslater translate:self.view];
+    
+    // Parallax effect on the OnAir view
+    [Parallax registerEffectForView:self.onAir_View withDepth:20];
+    [Parallax registerEffectForView:self.facebook_Btn withDepth:20];
+    [Parallax registerEffectForView:self.twitter_Btn withDepth:20];
+    [Parallax registerEffectForView:self.mail_Btn withDepth:20];
 }
 
 

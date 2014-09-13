@@ -14,7 +14,6 @@
 #import <MessageUI/MessageUI.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import "AFNetworking.h"
-#import "MountsArrayModel.h"
 
 
 @interface CUViewController : UIViewController <UIWebViewDelegate, MFMailComposeViewControllerDelegate>
@@ -22,42 +21,38 @@
 //**/ IBOutlets
 // Backing items
 //@property (nonatomic, strong) IBOutlet UIView                       *backing_View;
-@property (nonatomic, strong) IBOutlet UIButton                     *back_Btn;
-@property (nonatomic, strong) IBOutlet UIWebView                    *webView;
-@property (nonatomic, strong) IBOutlet UIView                       *aivBackground;
-@property (nonatomic, strong) IBOutlet UIActivityIndicatorView      *aiv;
+@property (strong, nonatomic) IBOutlet UIButton                     *back_Btn;
+@property (strong, nonatomic) IBOutlet UIWebView                    *webView;
+@property (strong, nonatomic) IBOutlet UIView                       *aivBackground;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView      *aiv;
 // Player components
-@property (nonatomic, strong) IBOutlet UIView                       *playerComponents_View;
+@property (strong, nonatomic) IBOutlet UIView                       *playerComponents_View;
 // On Air
-@property (nonatomic, strong) IBOutlet UIView                       *onAir_View;
+@property (strong, nonatomic) IBOutlet UIView                       *onAir_View;
 // Song Thumbnail
-@property (nonatomic, strong) IBOutlet UIImageView                  *currentSound_Img;
+@property (strong, nonatomic) IBOutlet UIImageView                  *currentSound_Img;
 // Timeline
-@property (nonatomic, strong) IBOutlet UIView                       *timeline_View;
-@property (nonatomic, strong) IBOutlet UIImageView                  *timelineBackground_Img;
-@property (nonatomic, strong) IBOutlet UILabel                      *timeline_Lbl;
-@property (nonatomic, assign) BOOL                                  timelineScrollingEnabled;
+@property (strong, nonatomic) IBOutlet UIView                       *timeline_View;
+@property (strong, nonatomic) IBOutlet UIImageView                  *timelineBackground_Img;
+@property (strong, nonatomic) IBOutlet UILabel                      *timeline_Lbl;
+@property (assign, nonatomic) BOOL                                  timelineScrollingEnabled;
 // MPVolume
-@property (nonatomic, strong) IBOutlet UIView                       *volume_View;
-@property (nonatomic, strong) IBOutlet MPVolumeView                 *mpVolumeView;
-@property (nonatomic, strong) IBOutlet UIButton                     *mute_Btn;
-@property (nonatomic, assign) float                                 oldVolume;
+@property (strong, nonatomic) IBOutlet UIView                       *volume_View;
+@property (strong, nonatomic) IBOutlet MPVolumeView                 *mpVolumeView;
+@property (strong, nonatomic) IBOutlet UIButton                     *mute_Btn;
+@property (assign, nonatomic) float                                 oldVolume;
+
 
 //**/ Properties
-// PanGestureRecognizer
-//@property (nonatomic, strong) UIPanGestureRecognizer                *recognizer;
-
 // Mounts
-@property (nonatomic, strong) MountsArrayModel                      *mountsArrayModel;
-@property (nonatomic, strong) NSMutableArray                        *mounts_MutableArray;
-@property (nonatomic, strong) Mounts                                *currentMount;
-@property (nonatomic, strong) NSString                              *previousMountsTitle;
+@property (strong, nonatomic) NSString                              *currentMountsTitle;
+@property (strong, nonatomic) NSString                              *previousMountsTitle;
 
 // Player
-@property (nonatomic, strong) MPMoviePlayerController               *player;
+@property (strong, nonatomic) MPMoviePlayerController               *player;
 
 // Various
-@property (nonatomic, assign) BOOL                                  isFirstAlert;
+@property (assign, nonatomic) BOOL                                  isFirstAlert;
 
 
 //**/ IBActions
@@ -69,7 +64,7 @@
 //**/ Methods
 - (void)goBack;
 // Only for OnAirViewController
-- (void)getCurrentMountsList;
+- (void)getCurrentMountInfos;
 - (void)fillCurrentMountInformations;
 - (void)restartPlayingFromBackgrounded;
 // Only for Mixes, Replays and Freshnews ViewControllers

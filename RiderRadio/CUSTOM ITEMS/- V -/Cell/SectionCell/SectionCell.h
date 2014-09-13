@@ -13,9 +13,10 @@
 @interface SectionCell : UITableViewCell
 
 //**/ IBOutlets
-@property (nonatomic, strong) IBOutlet UIView                           *background_View;
-@property (nonatomic, strong) IBOutlet UIImageView                      *sectionIcon_Imv;
-@property (nonatomic, strong) IBOutlet UILabel                          *sectionName_Lbl;
+@property (strong, nonatomic) IBOutlet UIView                           *background_View;
+@property (strong, nonatomic) IBOutlet UIImageView                      *sectionIcon_Imv;
+@property (strong, nonatomic) IBOutlet UILabel                          *sectionName_Lbl;
+@property (strong, nonatomic) IBOutlet UIImageView                      *rightArrow_Imv;
 
 @end
 

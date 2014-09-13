@@ -12,7 +12,7 @@
 
 // Facebook
 #import <AVFoundation/AVFoundation.h>
-#import <FacebookSDK/FacebookSDK.h>
+//#import <FacebookSDK/FacebookSDK.h>
 
 // Twitter
 #import <Twitter/Twitter.h>
@@ -20,11 +20,11 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (nonatomic, strong) UIWindow                  *window;
-@property (nonatomic, strong) UINavigationController    *viewController;
+@property (strong, nonatomic) UIWindow                  *window;
+@property (strong, nonatomic) UINavigationController    *viewController;
 
 // Facebook
-@property (nonatomic, strong) FBSession                 *fbSession;
+//@property (strong, nonatomic) FBSession                 *fbSession;
 
 @end
 

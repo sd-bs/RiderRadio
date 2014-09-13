@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F1B61A219C221F100D7A515 /* Parallax.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1B61A119C221F100D7A515 /* Parallax.m */; };
+		5F7084E619C36C6C0017D03B /* FluxIsDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7084E419C36C6C0017D03B /* FluxIsDownViewController.m */; };
+		5F7084E719C36C6C0017D03B /* FluxIsDownViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F7084E519C36C6C0017D03B /* FluxIsDownViewController.xib */; };
 		730C799F17E48C9B00E7572F /* CUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 730C799D17E48C9B00E7572F /* CUViewController.m */; };
 		730C79A017E48C9B00E7572F /* CUViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 730C799E17E48C9B00E7572F /* CUViewController.xib */; };
 		730C79A517E48EC700E7572F /* InfosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 730C79A317E48EC700E7572F /* InfosViewController.m */; };
@@ -36,8 +39,6 @@
 		7375397116D0361600A74EF2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7375397016D0361600A74EF2 /* main.m */; };
 		7375397516D0361600A74EF2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7375397416D0361600A74EF2 /* AppDelegate.m */; };
 		737974F61709EF5D00373D7F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 737974F51709EF5D00373D7F /* MessageUI.framework */; };
-		73A7EC3317679DE600031C99 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73A7EC3217679DE600031C99 /* FacebookSDK.framework */; };
-		73A7EC3517679E0500031C99 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 73A7EC3417679E0500031C99 /* FacebookSDKResources.bundle */; };
 		73A7EC3B17679EC600031C99 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73A7EC3617679EC600031C99 /* Accounts.framework */; };
 		73A7EC3C17679EC600031C99 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73A7EC3717679EC600031C99 /* AdSupport.framework */; };
 		73A7EC3D17679EC600031C99 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 73A7EC3817679EC600031C99 /* libsqlite3.dylib */; };
@@ -52,14 +53,16 @@
 		73B418A21738222000144C53 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B418671738222000144C53 /* AFURLConnectionOperation.m */; };
 		73B418A31738222000144C53 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B418691738222000144C53 /* AFXMLRequestOperation.m */; };
 		73B418A41738222000144C53 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B4186B1738222000144C53 /* UIImageView+AFNetworking.m */; };
-		73B418C9173823BF00144C53 /* MountsArrayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B418C8173823BF00144C53 /* MountsArrayModel.m */; };
-		73B418CF1738248F00144C53 /* NSCollection+Bind.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B418CC1738248F00144C53 /* NSCollection+Bind.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		73B418D01738248F00144C53 /* NSString+SBJson+Bind.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B418CE1738248F00144C53 /* NSString+SBJson+Bind.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		73B418D417382AFB00144C53 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B418D317382AFB00144C53 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		73EB99A11707684900C3E2DA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73EB99A01707684900C3E2DA /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F1B61A019C221F100D7A515 /* Parallax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parallax.h; sourceTree = "<group>"; };
+		5F1B61A119C221F100D7A515 /* Parallax.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parallax.m; sourceTree = "<group>"; };
+		5F7084E319C36C6C0017D03B /* FluxIsDownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluxIsDownViewController.h; sourceTree = "<group>"; };
+		5F7084E419C36C6C0017D03B /* FluxIsDownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FluxIsDownViewController.m; sourceTree = "<group>"; };
+		5F7084E519C36C6C0017D03B /* FluxIsDownViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FluxIsDownViewController.xib; sourceTree = "<group>"; };
+		5FC5708519B790D500F50130 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = RiderRadio/Libs/FacebookSDK.framework; sourceTree = "<group>"; };
 		730C799C17E48C9B00E7572F /* CUViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUViewController.h; sourceTree = "<group>"; };
 		730C799D17E48C9B00E7572F /* CUViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUViewController.m; sourceTree = "<group>"; };
 		730C799E17E48C9B00E7572F /* CUViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUViewController.xib; sourceTree = "<group>"; };
@@ -130,14 +133,6 @@
 		73B418691738222000144C53 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		73B4186A1738222000144C53 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		73B4186B1738222000144C53 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		73B418C7173823BF00144C53 /* MountsArrayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MountsArrayModel.h; sourceTree = "<group>"; };
-		73B418C8173823BF00144C53 /* MountsArrayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MountsArrayModel.m; sourceTree = "<group>"; };
-		73B418CB1738248F00144C53 /* NSCollection+Bind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSCollection+Bind.h"; sourceTree = "<group>"; };
-		73B418CC1738248F00144C53 /* NSCollection+Bind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSCollection+Bind.m"; sourceTree = "<group>"; };
-		73B418CD1738248F00144C53 /* NSString+SBJson+Bind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJson+Bind.h"; sourceTree = "<group>"; };
-		73B418CE1738248F00144C53 /* NSString+SBJson+Bind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJson+Bind.m"; sourceTree = "<group>"; };
-		73B418D217382AFB00144C53 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
-		73B418D317382AFB00144C53 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		73EB99A01707684900C3E2DA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -150,7 +145,6 @@
 				73A7EC3C17679EC600031C99 /* AdSupport.framework in Frameworks */,
 				733B5E4F176CB06D00A7B42A /* AVFoundation.framework in Frameworks */,
 				7375396916D0361600A74EF2 /* CoreGraphics.framework in Frameworks */,
-				73A7EC3317679DE600031C99 /* FacebookSDK.framework in Frameworks */,
 				7375396716D0361600A74EF2 /* Foundation.framework in Frameworks */,
 				7319EE491729348000C502E5 /* MediaPlayer.framework in Frameworks */,
 				737974F61709EF5D00373D7F /* MessageUI.framework in Frameworks */,
@@ -166,6 +160,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F7084E219C36C5D0017D03B /* FluxIsDown */ = {
+			isa = PBXGroup;
+			children = (
+				5F7084E319C36C6C0017D03B /* FluxIsDownViewController.h */,
+				5F7084E419C36C6C0017D03B /* FluxIsDownViewController.m */,
+				5F7084E519C36C6C0017D03B /* FluxIsDownViewController.xib */,
+			);
+			path = FluxIsDown;
+			sourceTree = "<group>";
+		};
+		5FAF48FB19BF813F000E6F97 /* Parallax */ = {
+			isa = PBXGroup;
+			children = (
+				5F1B61A019C221F100D7A515 /* Parallax.h */,
+				5F1B61A119C221F100D7A515 /* Parallax.m */,
+			);
+			path = Parallax;
+			sourceTree = "<group>";
+		};
 		730C799B17E48C9B00E7572F /* CUViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +291,7 @@
 		736672211779DE850017036A /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				5FAF48FB19BF813F000E6F97 /* Parallax */,
 				736672221779DE850017036A /* ViewTranslater */,
 			);
 			path = Tools;
@@ -313,6 +327,7 @@
 		7375396316D0361600A74EF2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5FC5708519B790D500F50130 /* FacebookSDK.framework */,
 				7319EE4A1729348B00C502E5 /* Core */,
 				73A7EC31176798DC00031C99 /* Facebook */,
 				7315F4ED1770D77700CC472E /* Twitter */,
@@ -364,6 +379,7 @@
 				735EF77C17D8FA6300030BBD /* HomeViewController.h */,
 				735EF77D17D8FA6300030BBD /* HomeViewController.m */,
 				735EF77E17D8FA6400030BBD /* HomeViewController.xib */,
+				5F7084E219C36C5D0017D03B /* FluxIsDown */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -372,7 +388,6 @@
 			isa = PBXGroup;
 			children = (
 				7319EE4417291FF700C502E5 /* Macros */,
-				73B418C61738239800144C53 /* Models */,
 				736672211779DE850017036A /* Tools */,
 			);
 			path = CONFIGURATION;
@@ -396,8 +411,6 @@
 			isa = PBXGroup;
 			children = (
 				73B418581738222000144C53 /* AFNetworking */,
-				73B418CA1738248F00144C53 /* CollectionBind */,
-				73B418D117382AFB00144C53 /* NSData+Base64 */,
 			);
 			name = Libs;
 			path = RiderRadio/Libs;
@@ -427,35 +440,6 @@
 				73B4186B1738222000144C53 /* UIImageView+AFNetworking.m */,
 			);
 			path = AFNetworking;
-			sourceTree = "<group>";
-		};
-		73B418C61738239800144C53 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				73B418C7173823BF00144C53 /* MountsArrayModel.h */,
-				73B418C8173823BF00144C53 /* MountsArrayModel.m */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		73B418CA1738248F00144C53 /* CollectionBind */ = {
-			isa = PBXGroup;
-			children = (
-				73B418CB1738248F00144C53 /* NSCollection+Bind.h */,
-				73B418CC1738248F00144C53 /* NSCollection+Bind.m */,
-				73B418CD1738248F00144C53 /* NSString+SBJson+Bind.h */,
-				73B418CE1738248F00144C53 /* NSString+SBJson+Bind.m */,
-			);
-			path = CollectionBind;
-			sourceTree = "<group>";
-		};
-		73B418D117382AFB00144C53 /* NSData+Base64 */ = {
-			isa = PBXGroup;
-			children = (
-				73B418D217382AFB00144C53 /* NSData+Base64.h */,
-				73B418D317382AFB00144C53 /* NSData+Base64.m */,
-			);
-			path = "NSData+Base64";
 			sourceTree = "<group>";
 		};
 		73EB996B1707187E00C3E2DA /* CUSTOM ITEMS */ = {
@@ -527,6 +511,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Fabien Moussavi";
+				TargetAttributes = {
+					7375396016D0361500A74EF2 = {
+						DevelopmentTeam = 3EFK4T4GP7;
+					};
+				};
 			};
 			buildConfigurationList = 7375395C16D0361500A74EF2 /* Build configuration list for PBXProject "RiderRadio" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -551,8 +540,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73A7EC3517679E0500031C99 /* FacebookSDKResources.bundle in Resources */,
 				7366721D1779D5EB0017036A /* Localizable.strings in Resources */,
+				5F7084E719C36C6C0017D03B /* FluxIsDownViewController.xib in Resources */,
 				735EF78017D8FA6400030BBD /* HomeViewController.xib in Resources */,
 				735EF78717D8FE9800030BBD /* SectionCell.xib in Resources */,
 				730C79A017E48C9B00E7572F /* CUViewController.xib in Resources */,
@@ -584,12 +573,10 @@
 				73B418A21738222000144C53 /* AFURLConnectionOperation.m in Sources */,
 				73B418A31738222000144C53 /* AFXMLRequestOperation.m in Sources */,
 				73B418A41738222000144C53 /* UIImageView+AFNetworking.m in Sources */,
-				73B418C9173823BF00144C53 /* MountsArrayModel.m in Sources */,
-				73B418CF1738248F00144C53 /* NSCollection+Bind.m in Sources */,
-				73B418D01738248F00144C53 /* NSString+SBJson+Bind.m in Sources */,
-				73B418D417382AFB00144C53 /* NSData+Base64.m in Sources */,
 				736672251779DE850017036A /* ViewTranslater.m in Sources */,
+				5F1B61A219C221F100D7A515 /* Parallax.m in Sources */,
 				735EF77F17D8FA6400030BBD /* HomeViewController.m in Sources */,
+				5F7084E619C36C6C0017D03B /* FluxIsDownViewController.m in Sources */,
 				735EF78517D8FE8300030BBD /* SectionCell.m in Sources */,
 				730C799F17E48C9B00E7572F /* CUViewController.m in Sources */,
 				730C79A517E48EC700E7572F /* InfosViewController.m in Sources */,
@@ -630,14 +617,16 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Fabien Moussavi (3EFK4T4GP7)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Fabien Moussavi (3EFK4T4GP7)";
 				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "85439CCB-0DA2-4205-963F-B0D8DD7E8970";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "85439CCB-0DA2-4205-963F-B0D8DD7E8970";
+				PRODUCT_NAME = "$(PRODUCT_NAME)";
+				PROVISIONING_PROFILE = "08e94f32-0d00-4081-9149-bf3e6a5fc788";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "08e94f32-0d00-4081-9149-bf3e6a5fc788";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -650,18 +639,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Fabien Moussavi (3EFK4T4GP7)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Documents/FacebookSDK\"",
+					"$(PROJECT_DIR)/RiderRadio/Libs",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RiderRadio/RiderRadio-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "RiderRadio/RiderRadio-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "85439CCB-0DA2-4205-963F-B0D8DD7E8970";
+				PROVISIONING_PROFILE = "08e94f32-0d00-4081-9149-bf3e6a5fc788";
+				SWIFT_OBJC_BRIDGING_HEADER = "RiderRadio/CONFIGURATION/Tools/Parallax/RiderRadio-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -682,6 +675,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Fabien Moussavi (DT32LRXJEL)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Fabien Moussavi (DT32LRXJEL)";
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -695,8 +689,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "358C3350-6378-487D-BD14-E8D24062235E";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "358C3350-6378-487D-BD14-E8D24062235E";
+				PRODUCT_NAME = "$(PRODUCT_NAME)";
+				PROVISIONING_PROFILE = "cb622ed2-0bb8-4f8f-ba79-70be56bff94b";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "cb622ed2-0bb8-4f8f-ba79-70be56bff94b";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s";
@@ -718,14 +713,16 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Fabien Moussavi (3EFK4T4GP7)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Fabien Moussavi (3EFK4T4GP7)";
 				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "86F69986-CA24-4AAD-AD0A-BA2B09FFE49C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "86F69986-CA24-4AAD-AD0A-BA2B09FFE49C";
+				PRODUCT_NAME = "$(PRODUCT_NAME)";
+				PROVISIONING_PROFILE = "ae481ce5-0454-44de-ad49-cb20f3f42e7f";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ae481ce5-0454-44de-ad49-cb20f3f42e7f";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -738,18 +735,23 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Fabien Moussavi (DT32LRXJEL)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Documents/FacebookSDK\"",
+					"$(PROJECT_DIR)/RiderRadio/Libs",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RiderRadio/RiderRadio-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "RiderRadio/RiderRadio-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "358C3350-6378-487D-BD14-E8D24062235E";
+				PROVISIONING_PROFILE = "cb622ed2-0bb8-4f8f-ba79-70be56bff94b";
+				SWIFT_OBJC_BRIDGING_HEADER = "RiderRadio/CONFIGURATION/Tools/Parallax/RiderRadio-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -760,18 +762,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Fabien Moussavi (3EFK4T4GP7)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Documents/FacebookSDK\"",
+					"$(PROJECT_DIR)/RiderRadio/Libs",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RiderRadio/RiderRadio-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "RiderRadio/RiderRadio-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "86F69986-CA24-4AAD-AD0A-BA2B09FFE49C";
+				PROVISIONING_PROFILE = "ae481ce5-0454-44de-ad49-cb20f3f42e7f";
+				SWIFT_OBJC_BRIDGING_HEADER = "RiderRadio/CONFIGURATION/Tools/Parallax/RiderRadio-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

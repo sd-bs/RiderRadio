@@ -8,6 +8,7 @@
 
 
 #import "InfosViewController.h"
+#import "Parallax.h"
 
 
 @interface InfosViewController ()
@@ -42,6 +43,10 @@
     
     // ScrollView content Size
     [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, 620.f)];
+    
+    // Parallax effect on buttons
+    [Parallax registerEffectForView:self.fluxRadio_Btn withDepth:20];
+    [Parallax registerEffectForView:self.liveSession_Btn withDepth:20];
 }
 
 

@@ -19,14 +19,18 @@
 @interface HomeViewController : CUViewController <UITableViewDataSource, UITableViewDelegate>
 
 //**/ IBOutlets
-@property (nonatomic, strong) IBOutlet UIButton                         *topImage_Btn;
-@property (nonatomic, strong) IBOutlet UITableView                      *tableView;
+@property (strong, nonatomic) IBOutlet UIButton                         *topImage_Btn;
+@property (strong, nonatomic) IBOutlet UIImageView                      *topImage_Imv;
+@property (strong, nonatomic) IBOutlet UITableView                      *tableView;
 
 //**/ Properties
-@property (nonatomic, strong) NSArray                                   *section_Array;
+@property (strong, nonatomic) NSArray                                   *section_Array;
+@property (assign, nonatomic) BOOL                                      isErrorMsgFirstLaunch;
+@property (strong, nonatomic) NSString                                  *errorFluxMessageURL_Str;
+@property (strong, nonatomic) UIImage                                   *errorFluxMessage_Img;
 
 // Player
-@property (nonatomic, strong) MPMoviePlayerController                   *player;
+@property (strong, nonatomic) MPMoviePlayerController                   *player;
 
 @end
 

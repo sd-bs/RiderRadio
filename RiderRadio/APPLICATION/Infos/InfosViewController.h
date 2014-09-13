@@ -13,7 +13,9 @@
 @interface InfosViewController : CUViewController
 
 //**/ IBOutlets
-@property (nonatomic, strong) IBOutlet UIScrollView                         *scrollView;
+@property (strong, nonatomic) IBOutlet UIScrollView                         *scrollView;
+@property (strong, nonatomic) IBOutlet UIButton                             *fluxRadio_Btn;
+@property (strong, nonatomic) IBOutlet UIButton                             *liveSession_Btn;
 
 @end
 

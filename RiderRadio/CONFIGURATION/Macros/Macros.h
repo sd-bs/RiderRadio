@@ -92,11 +92,11 @@ typedef NS_ENUM(NSInteger, SectionName) {
 //====================================================================================================//
 //                                                 URLs                                               //
 //====================================================================================================//
-// ON AIR
-#define URL_RIDER_RADIO_STREAMING_FLUX              @"http://stream.myjungly.fr/RIDER-RADIO2"
-#define URL_MOUNTS_FLUX_JSON                        @"http://stream.myjungly.fr/json.xsl"
-//#define URL_MOUNTS_THUMBNAIL                        @"http://cdn.myjungly.fr/mobile/" // Temporaire: pour tester images cf. lien du dessous
-#define URL_MOUNTS_THUMBNAIL                        @"http://cdn.myjungly.fr/web/"
+// ON AIR (new)
+#define URL_RIDER_RADIO_STREAMING_FLUX_WINAMP       @"http://manager3.radioking.fr/tunein/inabeath.pls"
+#define URL_RIDER_RADIO_CURRENT_SONG_INFO           @"http://37.58.75.166:8180/currentsong?sid=1"
+#define URL_RIDER_RADIO_CURRENT_SONG_JACKET         @"http://www.rider-radio.com/visuels/"
+#define URL_RIDER_RADIO_ERROR_MESSAGE_FLUX          @"http://www.rider-radio.com/appli/"
 
 // MIXES
 #define URL_RIDER_RADIO_MIXES                       @"https://soundcloud.com/riderradio"
@@ -113,7 +113,8 @@ typedef NS_ENUM(NSInteger, SectionName) {
 //====================================================================================================//
 //                                               Constant                                             //
 //====================================================================================================//
-#define PLAYING_MOUNT_TAG                           @"/RIDER-RADIO2"
+#define URL_RIDER_RADIO_ERROR_MSG_IMG_NAME          @"MessageAppli_"
+#define URL_RIDER_RADIO_ERROR_MSG_IMG_EXT           @".png"
 #define WEB_VIEW_CACHE_DURATION                     60 * 5                              // 5 min
 
 

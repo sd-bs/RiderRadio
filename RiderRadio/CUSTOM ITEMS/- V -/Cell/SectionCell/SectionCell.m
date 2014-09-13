@@ -8,6 +8,7 @@
 
 
 #import "SectionCell.h"
+#import "Parallax.h"
 
 
 @implementation SectionCell
@@ -21,7 +22,10 @@
 {
     self = [[[NSBundle mainBundle] loadNibNamed:@"SectionCell" owner:self options:nil] objectAtIndex:0];
     if (self) {
-        
+        // Parallax effect on the label text
+        [Parallax registerEffectForView:self.sectionIcon_Imv withDepth:15];
+        [Parallax registerEffectForView:self.sectionName_Lbl withDepth:15];
+        [Parallax registerEffectForView:self.rightArrow_Imv withDepth:15];
     }
     return self;
 }

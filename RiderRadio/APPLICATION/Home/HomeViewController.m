@@ -9,6 +9,8 @@
 
 #import "HomeViewController.h"
 #import "SectionCell.h"
+#import "Parallax.h"
+#import "FluxIsDownViewController.h"
 
 
 @interface HomeViewController ()
@@ -33,6 +35,9 @@
                               NSLocalizedString(@"Fresh_news", @""),
                               NSLocalizedString(@"Infos", @""),
                               nil];
+        
+        // Error Message
+        self.isErrorMsgFirstLaunch = YES;
     }
     return self;
 }
@@ -51,12 +56,18 @@
     // Hide the NavBar
     [self.navigationController setNavigationBarHidden:YES];
     
+    // Parallax effect on the top button
+    [Parallax registerEffectForView:self.topImage_Imv withDepth:20];
+    
     // Player
-    self.player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:URL_RIDER_RADIO_STREAMING_FLUX]];
+    self.player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:URL_RIDER_RADIO_STREAMING_FLUX_WINAMP]];
     [self.player setMovieSourceType:MPMovieSourceTypeStreaming];
     [self.player.view setHidden:YES];
     [self.view addSubview:self.player.view];
     [self.player play];
+    
+    // Check if there is a problem on the RiderRadio flux
+//    [self checkIfFluxIsDown]; // Comment this method call just during development
 }
 
 //**/
@@ -72,6 +83,18 @@
     
     // Resize the tableView content inset
     [self.tableView setContentInset:UIEdgeInsetsMake(0.f, 0.f, self.tableView.frame.size.height - 70.f, 0.f)];
+}
+
+//**/
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    // Display a modal view if there is a problem on the RiderRadio flux on the first launch only
+    if (self.isErrorMsgFirstLaunch) {
+        self.isErrorMsgFirstLaunch = NO;
+        [self displayErrorFluxMessage];
+    }
 }
 
 
@@ -92,15 +115,56 @@
 //====================================================================================================//
 //                                             Method                                                 //
 //====================================================================================================//
+//**/ Check if there is a error message about the flux from the serveur
+- (void)checkIfFluxIsDown
+{
+    // It's retina display
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] == YES && [[UIScreen mainScreen] scale] == 2.00) {
+        // It's iPhone 5
+        if ([[UIScreen mainScreen] bounds].size.height > 460) {
+            self.errorFluxMessageURL_Str = [NSString stringWithFormat:@"%@%@%@-568h@2x%@", URL_RIDER_RADIO_ERROR_MESSAGE_FLUX, URL_RIDER_RADIO_ERROR_MSG_IMG_NAME, [[NSLocale preferredLanguages] objectAtIndex:0], URL_RIDER_RADIO_ERROR_MSG_IMG_EXT];
+        }
+        // It's iPhone 4 or 4s
+        else {
+            self.errorFluxMessageURL_Str  = [NSString stringWithFormat:@"%@%@%@@2x%@", URL_RIDER_RADIO_ERROR_MESSAGE_FLUX, URL_RIDER_RADIO_ERROR_MSG_IMG_NAME, [[NSLocale preferredLanguages] objectAtIndex:0], URL_RIDER_RADIO_ERROR_MSG_IMG_EXT];
+        }
+    }
+    // It's normal display
+    else {
+        self.errorFluxMessageURL_Str  = [NSString stringWithFormat:@"%@%@%@%@", URL_RIDER_RADIO_ERROR_MESSAGE_FLUX, URL_RIDER_RADIO_ERROR_MSG_IMG_NAME, [[NSLocale preferredLanguages] objectAtIndex:0], URL_RIDER_RADIO_ERROR_MSG_IMG_EXT];
+    }
+}
+
+//**/ Display a modal view if there is a problem on the RiderRadio flux
+- (void)displayErrorFluxMessage
+{
+    // Security check on string
+    if (self.errorFluxMessageURL_Str) {
+        self.errorFluxMessage_Img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.errorFluxMessageURL_Str]]];
+        
+        // Display modal if the error message image has been successfully downloaded
+        if (self.errorFluxMessage_Img) {
+            [self presentViewController:[[FluxIsDownViewController alloc] initWithImage:self.errorFluxMessage_Img] animated:YES completion:NULL];
+        }
+    }
+}
+
 //**/
 - (void)pushSection:(int)sectionIndex
 {
     switch (sectionIndex) {
         case On_Air:
         {
-            OnAirViewController *onAirVC = [[OnAirViewController alloc] init];
-            [onAirVC setPlayer:self.player];
-            [self.navigationController pushViewController:onAirVC animated:YES];
+            // Display an error message if there is a problem on the RiderRadio flux
+            if (self.errorFluxMessage_Img) {
+                [self presentViewController:[[FluxIsDownViewController alloc] initWithImage:self.errorFluxMessage_Img] animated:YES completion:NULL];
+            }
+            // No problem: normal case
+            else {
+                OnAirViewController *onAirVC = [[OnAirViewController alloc] init];
+                [onAirVC setPlayer:self.player];
+                [self.navigationController pushViewController:onAirVC animated:YES];
+            }
             break;
         }
             
@@ -215,37 +279,37 @@
         case On_Air:
             [self.topImage_Btn setTag:On_Air];
             [self.topImage_Btn setBackgroundColor:colorDarkGrey];
-            [self.topImage_Btn setImage:[UIImage imageNamed:@"btn_OnAir"] forState:UIControlStateNormal];
+            [self.topImage_Imv setImage:[UIImage imageNamed:@"btn_OnAir"]];
             break;
             
         case Mixes:
             [self.topImage_Btn setTag:Mixes];
             [self.topImage_Btn setBackgroundColor:colorBurgundy];
-            [self.topImage_Btn setImage:[UIImage imageNamed:@"btn_Mixes"] forState:UIControlStateNormal];
+            [self.topImage_Imv setImage:[UIImage imageNamed:@"btn_Mixes"]];
             break;
             
         case Replays:
             [self.topImage_Btn setTag:Replays];
             [self.topImage_Btn setBackgroundColor:colorAniseGreen];
-            [self.topImage_Btn setImage:[UIImage imageNamed:@"btn_Replays"] forState:UIControlStateNormal];
+            [self.topImage_Imv setImage:[UIImage imageNamed:@"btn_Replays"]];
             break;
             
         case Fresh_news:
             [self.topImage_Btn setTag:Fresh_news];
             [self.topImage_Btn setBackgroundColor:colorGold];
-            [self.topImage_Btn setImage:[UIImage imageNamed:@"btn_Freshnews"] forState:UIControlStateNormal];
+            [self.topImage_Imv setImage:[UIImage imageNamed:@"btn_Freshnews"]];
             break;
             
         case Infos:
             [self.topImage_Btn setTag:Infos];
             [self.topImage_Btn setBackgroundColor:colorGrey];
-            [self.topImage_Btn setImage:[UIImage imageNamed:@"btn_Infos"] forState:UIControlStateNormal];
+            [self.topImage_Imv setImage:[UIImage imageNamed:@"btn_Infos"]];
             break;
             
         default:
             [self.topImage_Btn setTag:0];
             [self.topImage_Btn setBackgroundColor:[UIColor blackColor]];
-            [self.topImage_Btn setImage:nil forState:UIControlStateNormal];
+            [self.topImage_Imv setImage:nil];
             break;
     }
 }
@@ -266,7 +330,10 @@
 //**/
 - (void)adjustScrollingPosition:(UIScrollView *)scrollView
 {
+//    NSLog(@"Adjust: %f", scrollView.contentOffset.y);
+//    NSLog(@"Row: %d", [self.tableView indexPathForRowAtPoint:scrollView.contentOffset].row);
     [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForRowAtPoint:scrollView.contentOffset] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+//    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:scrollView.contentOffset.y / 70 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 
