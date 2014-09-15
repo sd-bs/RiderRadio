@@ -70,10 +70,9 @@
 // Only for Mixes, Replays and Freshnews ViewControllers
 - (void)loadWebView;
 // Facebook
-- (void)openFacebookSessionAndShareMounts:(NSString *)mountsName;
 - (void)shareCurrentMountsOnFacebook:(NSString *)mountsName;
 // Twitter
-- (void)openTwitterSessionAndShareMounts:(NSString *)mountName;
+- (void)shareCurrentMountsOnTwitter:(NSString *)mountName;
 
 
 @end

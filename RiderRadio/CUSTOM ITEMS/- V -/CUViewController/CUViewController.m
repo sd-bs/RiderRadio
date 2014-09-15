@@ -290,7 +290,6 @@
 - (void)shareWithFaceBook
 {
     NSLog(@"Facebook sharing...");
-//    [self openFacebookSessionAndShareMounts:self.currentMountsTitle];
     [self shareCurrentMountsOnFacebook:self.currentMountsTitle];
 }
 
@@ -298,7 +297,7 @@
 - (void)shareWithTwitter
 {
     NSLog(@"Twitter sharing...");
-    [self openTwitterSessionAndShareMounts:self.currentMountsTitle];
+    [self shareCurrentMountsOnTwitter:self.currentMountsTitle];
 }
 
 //**/
@@ -492,7 +491,7 @@
 //                                            Twitter                                                 //
 //====================================================================================================//
 //**/
-- (void)openTwitterSessionAndShareMounts:(NSString *)mountName
+- (void)shareCurrentMountsOnTwitter:(NSString *)mountName
 {
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
         

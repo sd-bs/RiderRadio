@@ -42,7 +42,7 @@
     [super viewDidLoad];
     
     // ScrollView content Size
-    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, 620.f)];
+    [self.scrollView setContentSize:CGSizeMake(self.scrollView.frame.size.width, 468.f)];
     
     // Parallax effect on buttons
     [Parallax registerEffectForView:self.fluxRadio_Btn withDepth:20];
