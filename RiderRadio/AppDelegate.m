@@ -24,19 +24,11 @@
                                       // Use the links to show a relevant view of your app to the user
                                       
                                       // For pushing directly to the OnAirViewController
-                                      UIViewController *rootVC = (UIViewController *)[self.window.rootViewController.childViewControllers objectAtIndex:[self.window.rootViewController childViewControllers].count - 1];
-                                      if ([rootVC isKindOfClass:HomeViewController.class]) {
-                                          [(HomeViewController *)rootVC pushSection:On_Air];
-                                      }
+                                      [self pushOnAirViewController];
                                   }];
     
     return urlWasHandled;
 }
-// OLD (v1.0)
-//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-//{
-//    return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication withSession:self.fbSession];
-//}
 
 //**/
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -90,29 +82,14 @@
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     NSLog(@"Become Active");
     
-    // For pushing directly to the OnAirViewController
-//    UIViewController *rootVC = (UIViewController *)[self.window.rootViewController.childViewControllers objectAtIndex:[self.window.rootViewController childViewControllers].count - 1];
-//    if ([rootVC isKindOfClass:HomeViewController.class]) {
-//        NSLog(@"Push to On Air VC");
-//        OnAirViewController *onAirVC = [[OnAirViewController alloc] init];
-//        [onAirVC setPlayer:((HomeViewController *)rootVC).player];
-//        [((HomeViewController *)rootVC).navigationController pushViewController:onAirVC animated:YES];
-//    }
-//    else
-        // Restart playing
-        [self restartPlaying];
-    
-    // Facebook
-//    [FBAppCall handleDidBecomeActiveWithSession:self.fbSession];
+    // Restart playing
+    [self restartPlaying];
 }
 
 //**/
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    
-    // Facebook
-//    [self.fbSession close];
 }
 
 //**/
@@ -122,6 +99,15 @@
     if ([rootVC isKindOfClass:CUViewController.class]) {
         NSLog(@"Restart playing");
         [(CUViewController *)rootVC restartPlayingFromBackgrounded];
+    }
+}
+
+//**/
+- (void)pushOnAirViewController
+{
+    UIViewController *rootVC = (UIViewController *)[self.window.rootViewController.childViewControllers objectAtIndex:[self.window.rootViewController childViewControllers].count - 1];
+    if ([rootVC isKindOfClass:HomeViewController.class]) {
+        [(HomeViewController *)rootVC pushSection:On_Air];
     }
 }
 

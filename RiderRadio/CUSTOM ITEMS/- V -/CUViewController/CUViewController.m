@@ -335,27 +335,27 @@
 //====================================================================================================//
 //                                            Facebook                                                //
 //====================================================================================================//
-//**/ First connection launch on view did load
-- (void)connectToFacebook
-{
-    //    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    //    if (!appDelegate.fbSession.isOpen) {
-    //        // Created a new session if it doesn't still exist
-    //        appDelegate.fbSession = [[FBSession alloc] init];
-    //
-    //        if (appDelegate.fbSession.state == FBSessionStateCreatedTokenLoaded) {
-    //            // even though we had a cached token, we need to login to make the session usable
-    //            [appDelegate.fbSession openWithCompletionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
-    //                // ...
-    //            }];
-    //        }
-    //    }
-}
+////**/ First connection launch on view did load
+//- (void)connectToFacebook
+//{
+//        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+//        if (!appDelegate.fbSession.isOpen) {
+//            // Created a new session if it doesn't still exist
+//            appDelegate.fbSession = [[FBSession alloc] init];
+//    
+//            if (appDelegate.fbSession.state == FBSessionStateCreatedTokenLoaded) {
+//                // even though we had a cached token, we need to login to make the session usable
+//                [appDelegate.fbSession openWithCompletionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+//                    // ...
+//                }];
+//            }
+//        }
+//}
 
-//**/ IBAction call by the Facebook button on the central panel
-- (void)openFacebookSessionAndShareMounts:(NSString *)mountsName
-{
-    // OLD (v1.0)
+////**/ IBAction call by the Facebook button on the central panel
+//- (void)openFacebookSessionAndShareMounts:(NSString *)mountsName
+//{
+//    // OLD (v1.0)
 //    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
 //    if (!appDelegate.fbSession.isOpen) {
 //        // Created a new session if it doesn't still exist
@@ -371,7 +371,7 @@
 //    else {
 //        [self shareCurrentMountsOnFacebook:mountsName];
 //    }
-}
+//}
 
 ////**/
 //- (void)updateFacebookConnectionState
@@ -494,25 +494,60 @@
 //**/
 - (void)openTwitterSessionAndShareMounts:(NSString *)mountName
 {
-    if ([TWTweetComposeViewController canSendTweet]) {
-        // Initialize Tweet Compose View Controller
-        TWTweetComposeViewController *vc = [[TWTweetComposeViewController alloc] init];
-        // Settin The Initial Text
-        [vc setInitialText:[NSLocalizedString(@"Heard_on_RR_Twitter", @"") stringByAppendingFormat:@"\n%@", mountName]];
-        // Adding an Image
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
+        
+        SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+        
+        SLComposeViewControllerCompletionHandler myBlock = ^(SLComposeViewControllerResult result){
+            if (result == SLComposeViewControllerResultCancelled) {
+                NSLog(@"Cancelled");
+                
+            }
+            else {
+                NSLog(@"Done");
+            }
+            
+            [controller dismissViewControllerAnimated:YES completion:NULL];
+        };
+        controller.completionHandler = myBlock;
+        
+        //Adding the Text to the facebook post value from iOS
+        [controller setInitialText:[NSLocalizedString(@"Heard_on_RR_Twitter", @"") stringByAppendingFormat:@"\n%@", mountName]];
+        
+        // Adding the URL
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_RIDER_RADIO_FRESHNEWS, [[NSLocale preferredLanguages] objectAtIndex:0]]];
+        [controller addURL:url];
+        
+        // Adding the Image
         UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:
                                                  [NSURL URLWithString:[[URL_RIDER_RADIO_CURRENT_SONG_JACKET stringByAppendingFormat:@"%@.jpg", mountName] stringByReplacingOccurrencesOfString:@" " withString:@"%20"]]]];
-        [vc addImage:image];
-        // Adding a URL
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_RIDER_RADIO_FRESHNEWS, [[NSLocale preferredLanguages] objectAtIndex:0]]];
-        [vc addURL:url];
-        // Setting a Completing Handler
-        [vc setCompletionHandler:^(TWTweetComposeViewControllerResult result) {
-            [self dismissViewControllerAnimated:YES completion:NULL];
-        }];
+        [controller addImage:image];
+        
         // Display Tweet Compose View Controller Modally
-        [self presentViewController:vc animated:YES completion:nil];
+        [self presentViewController:controller animated:YES completion:NULL];
     }
+    
+    // OLD (v1.0 with Twitter framework)
+//    if ([TWTweetComposeViewController canSendTweet]) {
+//        // Initialize Tweet Compose View Controller
+//        TWTweetComposeViewController *vc = [[TWTweetComposeViewController alloc] init];
+//        // Settin The Initial Text
+//        [vc setInitialText:[NSLocalizedString(@"Heard_on_RR_Twitter", @"") stringByAppendingFormat:@"\n%@", mountName]];
+//        // Adding an Image
+//        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:
+//                                                 [NSURL URLWithString:[[URL_RIDER_RADIO_CURRENT_SONG_JACKET stringByAppendingFormat:@"%@.jpg", mountName] stringByReplacingOccurrencesOfString:@" " withString:@"%20"]]]];
+//        [vc addImage:image];
+//        // Adding a URL
+//        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_RIDER_RADIO_FRESHNEWS, [[NSLocale preferredLanguages] objectAtIndex:0]]];
+//        [vc addURL:url];
+//        // Setting a Completing Handler
+//        [vc setCompletionHandler:^(TWTweetComposeViewControllerResult result) {
+//            [self dismissViewControllerAnimated:YES completion:NULL];
+//        }];
+//        // Display Tweet Compose View Controller Modally
+//        [self presentViewController:vc animated:YES completion:nil];
+//    }
+    
     else {
         // Show Alert View When The Application Cannot Send Tweets
         NSString *message = NSLocalizedString(@"No_Tweeter_Account_Joined_To_The_Device", @"");

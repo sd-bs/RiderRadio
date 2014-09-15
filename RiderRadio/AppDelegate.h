@@ -15,16 +15,13 @@
 #import <FacebookSDK/FacebookSDK.h>
 
 // Twitter
-#import <Twitter/Twitter.h>
+#import <Social/Social.h>
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow                  *window;
 @property (strong, nonatomic) UINavigationController    *viewController;
-
-// Facebook
-//@property (strong, nonatomic) FBSession                 *fbSession;
 
 @end
 

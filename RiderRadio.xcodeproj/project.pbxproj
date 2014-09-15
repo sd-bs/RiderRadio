@@ -23,7 +23,6 @@
 		730C79B817E4A2B400E7572F /* ReplaysViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 730C79B617E4A2B400E7572F /* ReplaysViewController.xib */; };
 		730C79BD17E4B46100E7572F /* OnAirViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 730C79BB17E4B46100E7572F /* OnAirViewController.m */; };
 		730C79BE17E4B46100E7572F /* OnAirViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 730C79BC17E4B46100E7572F /* OnAirViewController.xib */; };
-		7315F4EC1770D75B00CC472E /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7315F4EB1770D75B00CC472E /* Twitter.framework */; };
 		7319EE4717291FF700C502E5 /* Macros.m in Sources */ = {isa = PBXBuildFile; fileRef = 7319EE4617291FF700C502E5 /* Macros.m */; };
 		7319EE491729348000C502E5 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7319EE481729348000C502E5 /* MediaPlayer.framework */; };
 		733B5E4F176CB06D00A7B42A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733B5E4E176CB06D00A7B42A /* AVFoundation.framework */; };
@@ -82,7 +81,6 @@
 		730C79BA17E4B46100E7572F /* OnAirViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnAirViewController.h; sourceTree = "<group>"; };
 		730C79BB17E4B46100E7572F /* OnAirViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnAirViewController.m; sourceTree = "<group>"; };
 		730C79BC17E4B46100E7572F /* OnAirViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnAirViewController.xib; sourceTree = "<group>"; };
-		7315F4EB1770D75B00CC472E /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		7319EE4517291FF700C502E5 /* Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
 		7319EE4617291FF700C502E5 /* Macros.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Macros.m; sourceTree = "<group>"; };
 		7319EE481729348000C502E5 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -152,7 +150,6 @@
 				73EB99A11707684900C3E2DA /* QuartzCore.framework in Frameworks */,
 				73A7EC3E17679EC600031C99 /* Security.framework in Frameworks */,
 				73A7EC3F17679EC600031C99 /* Social.framework in Frameworks */,
-				7315F4EC1770D75B00CC472E /* Twitter.framework in Frameworks */,
 				7375396516D0361600A74EF2 /* UIKit.framework in Frameworks */,
 				73A7EC3D17679EC600031C99 /* libsqlite3.dylib in Frameworks */,
 			);
@@ -240,14 +237,6 @@
 			path = OnAir;
 			sourceTree = "<group>";
 		};
-		7315F4ED1770D77700CC472E /* Twitter */ = {
-			isa = PBXGroup;
-			children = (
-				7315F4EB1770D75B00CC472E /* Twitter.framework */,
-			);
-			name = Twitter;
-			sourceTree = "<group>";
-		};
 		7319EE4417291FF700C502E5 /* Macros */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,7 +319,6 @@
 			children = (
 				7319EE4A1729348B00C502E5 /* Core */,
 				73A7EC31176798DC00031C99 /* Facebook */,
-				7315F4ED1770D77700CC472E /* Twitter */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
