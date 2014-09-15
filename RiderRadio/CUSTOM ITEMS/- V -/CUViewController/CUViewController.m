@@ -290,7 +290,8 @@
 - (void)shareWithFaceBook
 {
     NSLog(@"Facebook sharing...");
-    [self openFacebookSessionAndShareMounts:self.currentMountsTitle];
+//    [self openFacebookSessionAndShareMounts:self.currentMountsTitle];
+    [self shareCurrentMountsOnFacebook:self.currentMountsTitle];
 }
 
 //**/
@@ -354,6 +355,7 @@
 //**/ IBAction call by the Facebook button on the central panel
 - (void)openFacebookSessionAndShareMounts:(NSString *)mountsName
 {
+    // OLD (v1.0)
 //    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
 //    if (!appDelegate.fbSession.isOpen) {
 //        // Created a new session if it doesn't still exist
@@ -371,61 +373,6 @@
 //    }
 }
 
-//**/
-- (void)shareCurrentMountsOnFacebook:(NSString *)mountsName
-{
-    NSLog(@"%@", [[URL_RIDER_RADIO_CURRENT_SONG_JACKET stringByAppendingFormat:@"%@.jpg", mountsName] stringByReplacingOccurrencesOfString:@" " withString:@"%20"]);
-    
-    // OBJECT
-    //
-    //    NSMutableDictionary<FBGraphObject> *object = [FBGraphObject openGraphObjectForPostWithType:@"music.song"
-    //                                                                      title:mountsName
-    //                                                                      image:[[URL_MOUNTS_THUMBNAIL stringByAppendingFormat:@"%@.jpg", mountsName]
-    //                                                                             stringByReplacingOccurrencesOfString:@" " withString:@"%20"]
-    //                                                                        url:URL_RIDER_RADIO
-    //                                                                description:@""];
-    //
-    //    [FBRequestConnection startForPostWithGraphPath:@"me/objects/music.song"
-    //                                       graphObject:object
-    //                                 completionHandler:^(FBRequestConnection *connection,
-    //                                                     id result,
-    //                                                     NSError *error) {
-    //                                     // handle the result
-    //                                     NSLog(@"Error: %@", error.description);
-    //                                 }];
-    
-    // ACTION
-    //
-    //    id<FBOpenGraphAction> action = (id<FBOpenGraphAction>)[FBGraphObject graphObject];
-    //    [action setObject:object forKey:@"song"];
-    //    [action setTags:[NSArray arrayWithObject:@"RiderRadio"]];
-    //
-    //    [FBDialogs presentShareDialogWithOpenGraphAction:action
-    //                                          actionType:@"song:is_listening"
-    //                                 previewPropertyName:@"song"
-    //                                             handler:^(FBAppCall *call, NSDictionary *results, NSError *error) {
-    //        if (error) {
-    //            NSLog(@"Error: %@", error.description);
-    //        } else {
-    //            NSLog(@"Success!");
-    //        }
-    //    }];
-    
-    
-    // **/////*****///******///*****//** //
-    // Very simple share (temp)
-    // **/////*****///******///*****//** //
-//    [FBDialogs presentShareDialogWithLink:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_RIDER_RADIO_FRESHNEWS, [[NSLocale preferredLanguages] objectAtIndex:0]]]
-//                                  handler:^(FBAppCall *call, NSDictionary *results, NSError *error) {
-//                                      if(error) {
-//                                          NSLog(@"Error: %@", error.description);
-//                                      } else {
-//                                          NSLog(@"Success!");
-//                                      }
-//                                  }];
-    // **/////*****///******///*****//** //
-}
-
 ////**/
 //- (void)updateFacebookConnectionState
 //{
@@ -438,6 +385,105 @@
 //        NSLog(@"The Facebook session is NOT open");
 //    }
 //}
+
+
+
+//**/ Simple Share
+- (void)shareCurrentMountsOnFacebook:(NSString *)mountsName
+{
+    // Check if the Facebook app is installed and we can present the share dialog
+    FBLinkShareParams *params = [[FBLinkShareParams alloc] initWithLink:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_RIDER_RADIO_SHARED_URL, [[NSLocale preferredLanguages] objectAtIndex:0]]]
+                                                                   name:self.currentMountsTitle
+                                                                caption:URL_RIDER_RADIO_SHARE_LINK_CAPTION
+                                                            description:URL_RIDER_RADIO_SHARE_MESSAGE
+                                                                picture:[NSURL URLWithString:[[URL_RIDER_RADIO_CURRENT_SONG_JACKET stringByAppendingFormat:@"%@.jpg", self.currentMountsTitle] stringByReplacingOccurrencesOfString:@" " withString:@"%20"]]];
+    
+    // If the Facebook app is installed on the current device => share dialog
+    if ([FBDialogs canPresentShareDialogWithParams:params]) {
+        // Present the share dialog on Wall
+        [FBDialogs presentShareDialogWithParams:params
+                                    clientState:nil
+                                        handler:^(FBAppCall *call, NSDictionary *results, NSError *error) {
+                                            if (error) {
+                                                // An error occurred -> See: https://developers.facebook.com/docs/ios/errors
+                                                NSLog(@"Error publishing story: %@", error.description);
+                                            }
+                                            else {
+                                                // Success
+                                                NSLog(@"result %@", results);
+                                            }
+                                        }];
+        
+        // Present the share dialog on Message
+//        [FBDialogs presentMessageDialogWithParams:params
+//                                      clientState:nil
+//                                          handler:^(FBAppCall *call, NSDictionary *results, NSError *error) {
+//                                              if (error) {
+//                                                  // An error occurred -> See: https://developers.facebook.com/docs/ios/errors
+//                                                  NSLog(@"Error publishing story: %@", error.description);
+//                                              }
+//                                              else {
+//                                                  // Success
+//                                                  NSLog(@"result %@", results);
+//                                              }
+//                                          }];
+    }
+    // The Facebook app is not installed on the current device => feed dialog
+    else {
+        // Present the feed dialog
+        // Put together the dialog parameters
+        NSMutableDictionary *mutDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                        URL_RIDER_RADIO_SHARED_URL, @"link",
+                                        self.currentMountsTitle, @"name",
+                                        URL_RIDER_RADIO_SHARE_LINK_CAPTION, @"caption",
+                                        URL_RIDER_RADIO_SHARE_MESSAGE, @"description",
+                                        [[URL_RIDER_RADIO_CURRENT_SONG_JACKET stringByAppendingFormat:@"%@.jpg", self.currentMountsTitle] stringByReplacingOccurrencesOfString:@" " withString:@"%20"], @"picture",
+                                        nil];
+        
+        // Show the feed dialog
+        [FBWebDialogs presentFeedDialogModallyWithSession:nil
+                                               parameters:mutDict
+                                                  handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+                                                      if (error) {
+                                                          // An error occurred, we need to handle the error
+                                                          // See: https://developers.facebook.com/docs/ios/errors
+                                                          NSLog(@"Error publishing story: %@", error.description);
+                                                      } else {
+                                                          if (result == FBWebDialogResultDialogNotCompleted) {
+                                                              // User cancelled.
+                                                              NSLog(@"User cancelled.");
+                                                          } else {
+                                                              // Handle the publish feed callback
+                                                              NSDictionary *urlParams = [self parseURLParams:[resultURL query]];
+                                                              
+                                                              if (![urlParams valueForKey:@"post_id"]) {
+                                                                  // User cancelled.
+                                                                  NSLog(@"User cancelled.");
+                                                                  
+                                                              } else {
+                                                                  // User clicked the Share button
+                                                                  NSString *result = [NSString stringWithFormat: @"Posted story, id: %@", [urlParams valueForKey:@"post_id"]];
+                                                                  NSLog(@"result %@", result);
+                                                              }
+                                                          }
+                                                      }
+                                                  }];
+    }
+}
+
+// A function for parsing URL parameters returned by the Feed Dialog.
+- (NSDictionary *)parseURLParams:(NSString *)query
+{
+    NSArray *pairs = [query componentsSeparatedByString:@"&"];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    for (NSString *pair in pairs) {
+        NSArray *kv = [pair componentsSeparatedByString:@"="];
+        NSString *val =
+        [kv[1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        params[kv[0]] = val;
+    }
+    return params;
+}
 
 
 //////////////////////

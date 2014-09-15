@@ -71,6 +71,7 @@
 - (void)loadWebView;
 // Facebook
 - (void)openFacebookSessionAndShareMounts:(NSString *)mountsName;
+- (void)shareCurrentMountsOnFacebook:(NSString *)mountsName;
 // Twitter
 - (void)openTwitterSessionAndShareMounts:(NSString *)mountName;
 

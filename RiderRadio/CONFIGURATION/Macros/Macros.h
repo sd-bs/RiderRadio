@@ -118,6 +118,15 @@ typedef NS_ENUM(NSInteger, SectionName) {
 #define WEB_VIEW_CACHE_DURATION                     60 * 5                              // 5 min
 
 
+//////////////////////
+#pragma mark - Sharing
+//====================================================================================================//
+//                                                Sharing                                             //
+//====================================================================================================//
+#define URL_RIDER_RADIO_SHARED_URL                  (URL_RIDER_RADIO_FRESHNEWS)
+#define URL_RIDER_RADIO_SHARE_MESSAGE               @"#NP sur @Rider_Radio"
+#define URL_RIDER_RADIO_SHARE_LINK_CAPTION          @"RiderRadio"
+
 
 
 

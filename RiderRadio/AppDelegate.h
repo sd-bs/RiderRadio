@@ -12,7 +12,7 @@
 
 // Facebook
 #import <AVFoundation/AVFoundation.h>
-//#import <FacebookSDK/FacebookSDK.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 // Twitter
 #import <Twitter/Twitter.h>

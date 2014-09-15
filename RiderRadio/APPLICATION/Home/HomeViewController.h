@@ -32,5 +32,9 @@
 // Player
 @property (strong, nonatomic) MPMoviePlayerController                   *player;
 
+
+//**/ Methods
+- (void)pushSection:(int)sectionIndex;
+
 @end
 

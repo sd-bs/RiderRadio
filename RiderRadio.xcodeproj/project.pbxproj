@@ -10,6 +10,7 @@
 		5F1B61A219C221F100D7A515 /* Parallax.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F1B61A119C221F100D7A515 /* Parallax.m */; };
 		5F7084E619C36C6C0017D03B /* FluxIsDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7084E419C36C6C0017D03B /* FluxIsDownViewController.m */; };
 		5F7084E719C36C6C0017D03B /* FluxIsDownViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F7084E519C36C6C0017D03B /* FluxIsDownViewController.xib */; };
+		5FB272AC19C4862800CCB4B7 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB272AB19C4862700CCB4B7 /* FacebookSDK.framework */; };
 		730C799F17E48C9B00E7572F /* CUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 730C799D17E48C9B00E7572F /* CUViewController.m */; };
 		730C79A017E48C9B00E7572F /* CUViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 730C799E17E48C9B00E7572F /* CUViewController.xib */; };
 		730C79A517E48EC700E7572F /* InfosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 730C79A317E48EC700E7572F /* InfosViewController.m */; };
@@ -62,7 +63,7 @@
 		5F7084E319C36C6C0017D03B /* FluxIsDownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FluxIsDownViewController.h; sourceTree = "<group>"; };
 		5F7084E419C36C6C0017D03B /* FluxIsDownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FluxIsDownViewController.m; sourceTree = "<group>"; };
 		5F7084E519C36C6C0017D03B /* FluxIsDownViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FluxIsDownViewController.xib; sourceTree = "<group>"; };
-		5FC5708519B790D500F50130 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = RiderRadio/Libs/FacebookSDK.framework; sourceTree = "<group>"; };
+		5FB272AB19C4862700CCB4B7 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = RiderRadio/Libs/FacebookSDK.framework; sourceTree = "<group>"; };
 		730C799C17E48C9B00E7572F /* CUViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUViewController.h; sourceTree = "<group>"; };
 		730C799D17E48C9B00E7572F /* CUViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUViewController.m; sourceTree = "<group>"; };
 		730C799E17E48C9B00E7572F /* CUViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUViewController.xib; sourceTree = "<group>"; };
@@ -107,7 +108,6 @@
 		7375397316D0361600A74EF2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7375397416D0361600A74EF2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		737974F51709EF5D00373D7F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		73A7EC3217679DE600031C99 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		73A7EC3417679E0500031C99 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = ../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
 		73A7EC3617679EC600031C99 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		73A7EC3717679EC600031C99 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -145,6 +145,7 @@
 				73A7EC3C17679EC600031C99 /* AdSupport.framework in Frameworks */,
 				733B5E4F176CB06D00A7B42A /* AVFoundation.framework in Frameworks */,
 				7375396916D0361600A74EF2 /* CoreGraphics.framework in Frameworks */,
+				5FB272AC19C4862800CCB4B7 /* FacebookSDK.framework in Frameworks */,
 				7375396716D0361600A74EF2 /* Foundation.framework in Frameworks */,
 				7319EE491729348000C502E5 /* MediaPlayer.framework in Frameworks */,
 				737974F61709EF5D00373D7F /* MessageUI.framework in Frameworks */,
@@ -327,7 +328,6 @@
 		7375396316D0361600A74EF2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5FC5708519B790D500F50130 /* FacebookSDK.framework */,
 				7319EE4A1729348B00C502E5 /* Core */,
 				73A7EC31176798DC00031C99 /* Facebook */,
 				7315F4ED1770D77700CC472E /* Twitter */,
@@ -398,7 +398,7 @@
 			children = (
 				73A7EC3617679EC600031C99 /* Accounts.framework */,
 				73A7EC3717679EC600031C99 /* AdSupport.framework */,
-				73A7EC3217679DE600031C99 /* FacebookSDK.framework */,
+				5FB272AB19C4862700CCB4B7 /* FacebookSDK.framework */,
 				73A7EC3917679EC600031C99 /* Security.framework */,
 				73A7EC3A17679EC600031C99 /* Social.framework */,
 				73A7EC3417679E0500031C99 /* FacebookSDKResources.bundle */,
@@ -650,7 +650,7 @@
 				GCC_PREFIX_HEADER = "RiderRadio/RiderRadio-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "RiderRadio/RiderRadio-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "08e94f32-0d00-4081-9149-bf3e6a5fc788";
@@ -746,7 +746,7 @@
 				GCC_PREFIX_HEADER = "RiderRadio/RiderRadio-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "RiderRadio/RiderRadio-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "cb622ed2-0bb8-4f8f-ba79-70be56bff94b";
@@ -773,7 +773,7 @@
 				GCC_PREFIX_HEADER = "RiderRadio/RiderRadio-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "RiderRadio/RiderRadio-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "ae481ce5-0454-44de-ad49-cb20f3f42e7f";
