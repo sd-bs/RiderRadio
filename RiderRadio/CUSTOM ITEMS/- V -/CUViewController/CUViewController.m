@@ -59,10 +59,10 @@
 //    DEBUG_LAYER(self.volume_View, blackColor)
     
     // Volume slider
-    [self.mpVolumeView setShowsRouteButton:NO];
+    [self.mpVolumeView setShowsRouteButton:YES]; // Set to YES to add the AirPlay functionality (A Vérifier)
     [self.mpVolumeView setShowsVolumeSlider:YES];
     
-    // available since iOS 5
+    // Available since iOS 5
     [[UISlider appearanceWhenContainedIn:
       [MPVolumeView class], nil] setMinimumTrackImage:[[UIImage imageNamed:@"img_minTrack"]
                                                        resizableImageWithCapInsets:UIEdgeInsetsMake(3, 13, 3, 13)] forState:UIControlStateNormal];
@@ -86,12 +86,6 @@
     else {
         [[UISlider appearanceWhenContainedIn:[MPVolumeView class], nil] setThumbImage:[UIImage imageNamed:@"btn_volume_cursor_negatif"] forState:UIControlStateNormal];
         [[UISlider appearanceWhenContainedIn:[MPVolumeView class], nil] setThumbImage:[UIImage imageNamed:@"btn_volume_cursor_negatif"] forState:UIControlStateHighlighted];
-    }
-    
-    // Select the mute button if the volume is down
-    if (0.f == [[MPMusicPlayerController applicationMusicPlayer] volume]) {
-        [self.mute_Btn setSelected:YES];
-        [self.mpVolumeView setUserInteractionEnabled:NO];
     }
     
     [self restartPlayingFromBackgrounded];
@@ -167,6 +161,18 @@
 //**/
 - (void)restartPlayingFromBackgrounded
 {
+    // Select the mute button if the volume is down
+    if (0.f == [[MPMusicPlayerController applicationMusicPlayer] volume]) {
+        NSLog(@"Mute");
+        [self.mute_Btn setSelected:YES];
+        [self.mpVolumeView setUserInteractionEnabled:NO];
+    }
+    else {
+        NSLog(@"Sound");
+        [self.mute_Btn setSelected:NO];
+        [self.mpVolumeView setUserInteractionEnabled:YES];
+    }
+    
     if (self.player) {
         if (!self.player.isPreparedToPlay)
             [self.player setContentURL:[NSURL URLWithString:URL_RIDER_RADIO_STREAMING_FLUX_WINAMP]];

@@ -67,7 +67,7 @@
     [self.player play];
     
     // Check if there is a problem on the RiderRadio flux
-//    [self checkIfFluxIsDown]; // Comment this method call just during development
+    [self checkIfFluxIsDown]; // Comment this method call just during development
 }
 
 //**/
