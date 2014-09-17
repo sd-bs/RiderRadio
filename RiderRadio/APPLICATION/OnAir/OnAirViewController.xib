@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -9,10 +9,10 @@
             <connections>
                 <outlet property="back_Btn" destination="34" id="36"/>
                 <outlet property="currentSound_Img" destination="16" id="23"/>
+                <outlet property="cut_Swt" destination="HvV-dm-cyE" id="f1k-qK-3gl"/>
                 <outlet property="facebook_Btn" destination="12" id="Bea-8x-aTI"/>
                 <outlet property="mail_Btn" destination="14" id="KFm-bc-9m0"/>
-                <outlet property="mpVolumeView" destination="9" id="32"/>
-                <outlet property="mute_Btn" destination="15" id="27"/>
+                <outlet property="mpVolumeView" destination="28t-5M-8gP" id="aw0-KA-ceS"/>
                 <outlet property="onAir_View" destination="10" id="22"/>
                 <outlet property="playerComponents_View" destination="7" id="21"/>
                 <outlet property="timelineBackground_Img" destination="20" id="25"/>
@@ -80,10 +80,6 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="img_bottom_volume" id="11">
-                            <rect key="frame" x="0.0" y="385" width="320" height="95"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        </imageView>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="12">
                             <rect key="frame" x="95" y="350" width="35" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
@@ -162,31 +158,29 @@
                                 <action selector="share:" destination="-1" eventType="touchUpInside" id="30"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="15">
-                            <rect key="frame" x="9" y="401" width="35" height="35"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                            <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
-                            <state key="normal" title="Vol" image="btn_volume_mute">
-                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </state>
-                            <state key="selected" image="btn_volume_mute_on.png">
-                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </state>
-                            <state key="highlighted" image="btn_volume_mute_on">
-                                <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="mute:" destination="-1" eventType="touchUpInside" id="31"/>
-                            </connections>
-                        </button>
-                        <view contentMode="scaleToFill" id="9" customClass="MPVolumeView">
-                            <rect key="frame" x="60" y="441" width="194" height="29"/>
+                        <view contentMode="scaleToFill" id="wuX-Ez-Pdw">
+                            <rect key="frame" x="0.0" y="427" width="320" height="45"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <subviews>
+                                <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="img_volumeScaleLevel_negatif" id="f1v-vK-RFQ">
+                                    <rect key="frame" x="45" y="10" width="242" height="25"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </imageView>
+                                <view contentMode="scaleToFill" id="28t-5M-8gP" customClass="MPVolumeView">
+                                    <rect key="frame" x="86" y="13" width="184" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="HvV-dm-cyE">
+                                    <rect key="frame" x="15" y="7" width="51" height="31"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    <color key="onTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <connections>
+                                        <action selector="cut:" destination="-1" eventType="touchUpInside" id="bmb-Cb-CP2"/>
+                                    </connections>
+                                </switch>
+                            </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
@@ -219,6 +213,35 @@
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
+        <view contentMode="scaleToFill" id="ngU-sz-z85">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" id="zJ0-KS-tkI">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="img_volumeScaleLevel_negatif" id="TVY-me-19L">
+                            <rect key="frame" x="45" y="10" width="242" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </imageView>
+                        <view contentMode="scaleToFill" id="iIe-Pe-bHt" customClass="MPVolumeView">
+                            <rect key="frame" x="86" y="13" width="184" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="mLw-NP-wLe">
+                            <rect key="frame" x="15" y="7" width="51" height="31"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            <color key="onTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </switch>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+        </view>
     </objects>
     <resources>
         <image name="btn_backNavigation" width="20" height="58"/>
@@ -228,13 +251,10 @@
         <image name="btn_mail_on" width="25" height="24"/>
         <image name="btn_twitter" width="25" height="24"/>
         <image name="btn_twitter_on" width="25" height="24"/>
-        <image name="btn_volume_mute" width="27" height="26"/>
-        <image name="btn_volume_mute_on" width="27" height="26"/>
-        <image name="btn_volume_mute_on.png" width="27" height="26"/>
-        <image name="img_bottom_volume" width="320" height="99"/>
         <image name="img_homeBackground" width="320" height="461"/>
         <image name="img_placeholder" width="240" height="240"/>
         <image name="img_timeline_background" width="200" height="19"/>
+        <image name="img_volumeScaleLevel_negatif" width="300" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

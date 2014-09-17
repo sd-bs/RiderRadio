@@ -161,8 +161,9 @@
             }
             // No problem: normal case
             else {
-                OnAirViewController *onAirVC = [[OnAirViewController alloc] init];
+                OnAirViewController *onAirVC = [[OnAirViewController alloc] initOnPaused:self.playerIsPaused];
                 [onAirVC setPlayer:self.player];
+                [onAirVC setParentVC:self];
                 [self.navigationController pushViewController:onAirVC animated:YES];
             }
             break;
@@ -170,7 +171,7 @@
             
         case Mixes:
         {
-            MixesViewController *mixesVC = [[MixesViewController alloc] init];
+            MixesViewController *mixesVC = [[MixesViewController alloc] initOnPaused:self.playerIsPaused];
             [mixesVC setPlayer:self.player];
             [self.navigationController pushViewController:mixesVC animated:YES];
             break;
@@ -178,22 +179,24 @@
             
         case Replays:
         {
-            ReplaysViewController *replaysVC = [[ReplaysViewController alloc] init];
+            ReplaysViewController *replaysVC = [[ReplaysViewController alloc] initOnPaused:self.playerIsPaused];
             [replaysVC setPlayer:self.player];
+            [replaysVC setParentVC:self];
             [self.navigationController pushViewController:replaysVC animated:YES];
             break;
         }
             
         case Fresh_news:
         {
-            FreshnewsViewController *freshnewsVC = [[FreshnewsViewController alloc] init];
+            FreshnewsViewController *freshnewsVC = [[FreshnewsViewController alloc] initOnPaused:self.playerIsPaused];
             [freshnewsVC setPlayer:self.player];
+            [freshnewsVC setParentVC:self];
             [self.navigationController pushViewController:freshnewsVC animated:YES];
             break;
         }
             
         case Infos:
-            [self.navigationController pushViewController:[[InfosViewController alloc] init] animated:YES];
+            [self.navigationController pushViewController:[[InfosViewController alloc] initOnPaused:self.playerIsPaused] animated:YES];
             break;
     }
 }

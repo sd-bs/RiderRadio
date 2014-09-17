@@ -11,6 +11,7 @@
 		5F7084E619C36C6C0017D03B /* FluxIsDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F7084E419C36C6C0017D03B /* FluxIsDownViewController.m */; };
 		5F7084E719C36C6C0017D03B /* FluxIsDownViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F7084E519C36C6C0017D03B /* FluxIsDownViewController.xib */; };
 		5FB272AC19C4862800CCB4B7 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB272AB19C4862700CCB4B7 /* FacebookSDK.framework */; };
+		5FB5FB4919C9EEE6007CE3BF /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB5FB4819C9EEE6007CE3BF /* Crashlytics.framework */; };
 		730C799F17E48C9B00E7572F /* CUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 730C799D17E48C9B00E7572F /* CUViewController.m */; };
 		730C79A017E48C9B00E7572F /* CUViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 730C799E17E48C9B00E7572F /* CUViewController.xib */; };
 		730C79A517E48EC700E7572F /* InfosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 730C79A317E48EC700E7572F /* InfosViewController.m */; };
@@ -63,6 +64,7 @@
 		5F7084E419C36C6C0017D03B /* FluxIsDownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FluxIsDownViewController.m; sourceTree = "<group>"; };
 		5F7084E519C36C6C0017D03B /* FluxIsDownViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FluxIsDownViewController.xib; sourceTree = "<group>"; };
 		5FB272AB19C4862700CCB4B7 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = RiderRadio/Libs/FacebookSDK.framework; sourceTree = "<group>"; };
+		5FB5FB4819C9EEE6007CE3BF /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		730C799C17E48C9B00E7572F /* CUViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUViewController.h; sourceTree = "<group>"; };
 		730C799D17E48C9B00E7572F /* CUViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUViewController.m; sourceTree = "<group>"; };
 		730C799E17E48C9B00E7572F /* CUViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CUViewController.xib; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				7375396916D0361600A74EF2 /* CoreGraphics.framework in Frameworks */,
 				5FB272AC19C4862800CCB4B7 /* FacebookSDK.framework in Frameworks */,
 				7375396716D0361600A74EF2 /* Foundation.framework in Frameworks */,
+				5FB5FB4919C9EEE6007CE3BF /* Crashlytics.framework in Frameworks */,
 				7319EE491729348000C502E5 /* MediaPlayer.framework in Frameworks */,
 				737974F61709EF5D00373D7F /* MessageUI.framework in Frameworks */,
 				73EB99A11707684900C3E2DA /* QuartzCore.framework in Frameworks */,
@@ -316,6 +319,7 @@
 		7375396316D0361600A74EF2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5FB5FB4819C9EEE6007CE3BF /* Crashlytics.framework */,
 				7319EE4A1729348B00C502E5 /* Core */,
 				73A7EC31176798DC00031C99 /* Facebook */,
 			);
@@ -479,6 +483,7 @@
 				7375395D16D0361500A74EF2 /* Sources */,
 				7375395E16D0361500A74EF2 /* Frameworks */,
 				7375395F16D0361500A74EF2 /* Resources */,
+				5FB5FB4719C9EE87007CE3BF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -541,6 +546,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5FB5FB4719C9EE87007CE3BF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 6470076a4e8d89c0ff40969b610709937de85a09 692b2d3b78eecfedcf4c979eecdca186cacc765adc7e8aa1f51625426f539857";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7375395D16D0361500A74EF2 /* Sources */ = {
@@ -631,6 +652,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Documents/FacebookSDK\"",
 					"$(PROJECT_DIR)/RiderRadio/Libs",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RiderRadio/RiderRadio-Prefix.pch";
@@ -727,6 +749,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Documents/FacebookSDK\"",
 					"$(PROJECT_DIR)/RiderRadio/Libs",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RiderRadio/RiderRadio-Prefix.pch";
@@ -755,6 +778,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Documents/FacebookSDK\"",
 					"$(PROJECT_DIR)/RiderRadio/Libs",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RiderRadio/RiderRadio-Prefix.pch";

@@ -8,6 +8,7 @@
 
 
 #import "AppDelegate.h"
+#import <Crashlytics/Crashlytics.h>
 
 
 @implementation AppDelegate
@@ -33,6 +34,9 @@
 //**/
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Crashlytics
+    [Crashlytics startWithAPIKey:@"6470076a4e8d89c0ff40969b610709937de85a09"];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     // ...

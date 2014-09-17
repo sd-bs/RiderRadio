@@ -27,14 +27,21 @@
 //                                              INIT                                                  //
 //====================================================================================================//
 //**/
-- (id)init
+- (id)initOnPaused:(BOOL)isPaused
 {
     self = [super init];
     if (self) {
-        self.oldVolume = .25f;
+//        self.oldVolume = .25f;
+        self.playerIsPaused = isPaused;
         self.currentMountsTitle = @"";
     }
     return self;
+}
+
+//**/
+- (id)init
+{
+    return [self initOnPaused:NO];
 }
 
 
@@ -61,7 +68,8 @@
     // Volume slider
     [self.mpVolumeView setShowsRouteButton:YES]; // Set to YES to add the AirPlay functionality (A Vérifier)
     [self.mpVolumeView setShowsVolumeSlider:YES];
-    
+    [self.mpVolumeView sizeToFit];
+
     // Available since iOS 5
     [[UISlider appearanceWhenContainedIn:
       [MPVolumeView class], nil] setMinimumTrackImage:[[UIImage imageNamed:@"img_minTrack"]
@@ -69,6 +77,14 @@
     [[UISlider appearanceWhenContainedIn:
       [MPVolumeView class], nil] setMaximumTrackImage:[[UIImage imageNamed:@"img_maxTrack"]
                                                        resizableImageWithCapInsets:UIEdgeInsetsMake(3, 13, 3, 13)] forState:UIControlStateNormal];
+    
+    // Custom AirPlay button
+    for (UIButton *btn in self.mpVolumeView.subviews) {
+        if ([btn isKindOfClass:UIButton.class]) {
+            [btn setImage:[UIImage imageNamed:@"btn_airplay_off"] forState:UIControlStateNormal];
+            [btn setImage:[UIImage imageNamed:@"btn_airplay_on"] forState:UIControlStateSelected];
+        }
+    }
     
     // Load the WebView
     [self loadWebView];
@@ -79,14 +95,14 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     // Set the volume slider button skin
-    if ([self isKindOfClass:OnAirViewController.class]) {
-        [[UISlider appearanceWhenContainedIn:[MPVolumeView class], nil] setThumbImage:[UIImage imageNamed:@"btn_volume_cursor"] forState:UIControlStateNormal];
-        [[UISlider appearanceWhenContainedIn:[MPVolumeView class], nil] setThumbImage:[UIImage imageNamed:@"btn_volume_cursor"] forState:UIControlStateHighlighted];
-    }
-    else {
-        [[UISlider appearanceWhenContainedIn:[MPVolumeView class], nil] setThumbImage:[UIImage imageNamed:@"btn_volume_cursor_negatif"] forState:UIControlStateNormal];
-        [[UISlider appearanceWhenContainedIn:[MPVolumeView class], nil] setThumbImage:[UIImage imageNamed:@"btn_volume_cursor_negatif"] forState:UIControlStateHighlighted];
-    }
+//    if ([self isKindOfClass:OnAirViewController.class]) {
+//        [[UISlider appearanceWhenContainedIn:[MPVolumeView class], nil] setThumbImage:[UIImage imageNamed:@"btn_volume_cursor"] forState:UIControlStateNormal];
+//        [[UISlider appearanceWhenContainedIn:[MPVolumeView class], nil] setThumbImage:[UIImage imageNamed:@"btn_volume_cursor"] forState:UIControlStateHighlighted];
+//    }
+//    else {
+//        [[UISlider appearanceWhenContainedIn:[MPVolumeView class], nil] setThumbImage:[UIImage imageNamed:@"btn_volume_cursor_negatif"] forState:UIControlStateNormal];
+//        [[UISlider appearanceWhenContainedIn:[MPVolumeView class], nil] setThumbImage:[UIImage imageNamed:@"btn_volume_cursor_negatif"] forState:UIControlStateHighlighted];
+//    }
     
     [self restartPlayingFromBackgrounded];
 }
@@ -143,40 +159,71 @@
 //                                             On Air                                                 //
 //====================================================================================================//
 //**/
-- (IBAction)mute:(UIButton *)button
+//- (IBAction)mute:(UIButton *)button
+//{
+//    if (![button isSelected]) {
+//        [button setSelected:YES];
+//        self.oldVolume = [[MPMusicPlayerController applicationMusicPlayer] volume];
+//        [[MPMusicPlayerController applicationMusicPlayer] setVolume:0.f];
+//        [self.mpVolumeView setUserInteractionEnabled:NO];
+//    }
+//    else {
+//        [button setSelected:NO];
+//        [[MPMusicPlayerController applicationMusicPlayer] setVolume:self.oldVolume];
+//        [self.mpVolumeView setUserInteractionEnabled:YES];
+//    }
+//}
+
+//**/
+- (IBAction)cut:(UISwitch *)sender
 {
-    if (![button isSelected]) {
-        [button setSelected:YES];
-        self.oldVolume = [[MPMusicPlayerController applicationMusicPlayer] volume];
-        [[MPMusicPlayerController applicationMusicPlayer] setVolume:0.f];
-        [self.mpVolumeView setUserInteractionEnabled:NO];
+    // Active the flux
+    if (sender.isOn) {
+        self.playerIsPaused = NO;
+        if (self.parentVC)
+            self.parentVC.playerIsPaused = NO;
     }
+    // Cut the flux
     else {
-        [button setSelected:NO];
-        [[MPMusicPlayerController applicationMusicPlayer] setVolume:self.oldVolume];
-        [self.mpVolumeView setUserInteractionEnabled:YES];
+        self.playerIsPaused = YES;
+        if (self.parentVC)
+            self.parentVC.playerIsPaused = YES;
     }
+    
+    [self restartPlayingFromBackgrounded];
 }
 
 //**/
 - (void)restartPlayingFromBackgrounded
 {
-    // Select the mute button if the volume is down
-    if (0.f == [[MPMusicPlayerController applicationMusicPlayer] volume]) {
-        NSLog(@"Mute");
-        [self.mute_Btn setSelected:YES];
-        [self.mpVolumeView setUserInteractionEnabled:NO];
-    }
-    else {
-        NSLog(@"Sound");
-        [self.mute_Btn setSelected:NO];
-        [self.mpVolumeView setUserInteractionEnabled:YES];
-    }
+//    // Select the mute button if the volume is down
+//    if (0.f == [[MPMusicPlayerController applicationMusicPlayer] volume]) {
+//        NSLog(@"Mute");
+////        [self.mute_Btn setSelected:YES];
+//        [self.cut_Swt setOn:NO animated:NO];
+//        [self.mpVolumeView setUserInteractionEnabled:NO];
+//    }
+//    else {
+//        NSLog(@"Sound");
+////        [self.mute_Btn setSelected:NO];
+//        [self.cut_Swt setOn:YES animated:NO];
+//        [self.mpVolumeView setUserInteractionEnabled:YES];
+//    }
     
     if (self.player) {
-        if (!self.player.isPreparedToPlay)
-            [self.player setContentURL:[NSURL URLWithString:URL_RIDER_RADIO_STREAMING_FLUX_WINAMP]];
-        [self.player play];
+        if (self.playerIsPaused) {
+            NSLog(@"Player is paused");
+            [self.player pause];
+            [self.cut_Swt setOn:NO animated:NO];
+        }
+        else {
+            NSLog(@"Player is playing");
+            if (!self.player.isPreparedToPlay) {
+                [self.player setContentURL:[NSURL URLWithString:URL_RIDER_RADIO_STREAMING_FLUX_WINAMP]];
+            }
+            [self.player play];
+            [self.cut_Swt setOn:YES animated:NO];
+        }
     }
 }
 
@@ -602,6 +649,9 @@
     if (navigationType == UIWebViewNavigationTypeLinkClicked) {
         NSLog(@"Le lien cliqué est: %@", request.URL.scheme);
     }
+//    else {
+//        NSLog(@"Anything else event type");
+//    }
     return YES;
 }
 

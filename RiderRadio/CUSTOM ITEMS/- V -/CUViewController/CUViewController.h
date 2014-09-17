@@ -39,11 +39,16 @@
 // MPVolume
 @property (strong, nonatomic) IBOutlet UIView                       *volume_View;
 @property (strong, nonatomic) IBOutlet MPVolumeView                 *mpVolumeView;
-@property (strong, nonatomic) IBOutlet UIButton                     *mute_Btn;
-@property (assign, nonatomic) float                                 oldVolume;
+@property (strong, nonatomic) IBOutlet UISwitch                     *cut_Swt;
+@property (assign, nonatomic) BOOL                                  playerIsPaused;
+//@property (strong, nonatomic) IBOutlet UIButton                     *mute_Btn;
+//@property (assign, nonatomic) float                                 oldVolume;
 
 
 //**/ Properties
+// Parent
+@property (weak, nonatomic) CUViewController                        *parentVC;
+
 // Mounts
 @property (strong, nonatomic) NSString                              *currentMountsTitle;
 @property (strong, nonatomic) NSString                              *previousMountsTitle;
@@ -58,10 +63,12 @@
 //**/ IBActions
 - (IBAction)popViewController:(UIButton *)button;
 - (IBAction)share:(UIButton *)button;
-- (IBAction)mute:(UIButton *)button;
+//- (IBAction)mute:(UIButton *)button;
+- (IBAction)cut:(UISwitch *)sender;
 
 
 //**/ Methods
+- (id)initOnPaused:(BOOL)isPaused;
 - (void)goBack;
 // Only for OnAirViewController
 - (void)getCurrentMountInfos;

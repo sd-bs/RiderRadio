@@ -93,8 +93,8 @@ typedef NS_ENUM(NSInteger, SectionName) {
 //                                                 URLs                                               //
 //====================================================================================================//
 // ON AIR (new)
-#define URL_RIDER_RADIO_STREAMING_FLUX_WINAMP       @"http://manager3.radioking.fr/tunein/inabeath.pls"
-#define URL_RIDER_RADIO_CURRENT_SONG_INFO           @"http://37.58.75.166:8180/currentsong?sid=1"
+#define URL_RIDER_RADIO_STREAMING_FLUX_WINAMP       @"http://manager3.radioking.fr/tunein/riderrad.pls"
+#define URL_RIDER_RADIO_CURRENT_SONG_INFO           @"http://37.58.75.166:8684/currentsong?sid=1"
 #define URL_RIDER_RADIO_CURRENT_SONG_JACKET         @"http://www.rider-radio.com/visuels/"
 #define URL_RIDER_RADIO_ERROR_MESSAGE_FLUX          @"http://www.rider-radio.com/appli/"
 
