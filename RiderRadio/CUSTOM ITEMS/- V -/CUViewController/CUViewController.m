@@ -31,7 +31,6 @@
 {
     self = [super init];
     if (self) {
-//        self.oldVolume = .25f;
         self.playerIsPaused = isPaused;
         self.currentMountsTitle = @"";
     }
@@ -128,6 +127,25 @@
 //**/
 - (void)loadWebView
 {
+//    self.mixes_Wbv = [[UIWebView alloc] init];
+//    self.mixes_Wbv.scrollView.bounces = NO;
+//    [self.mixes_Wbv loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:URL_RIDER_RADIO_MIXES]
+//                                                 cachePolicy:NSURLRequestReturnCacheDataElseLoad
+//                                             timeoutInterval:WEB_VIEW_CACHE_DURATION]];
+//
+//    self.replays_Wbv = [[UIWebView alloc] init];
+//    self.replays_Wbv.scrollView.bounces = NO;
+//    [self.replays_Wbv loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:URL_RIDER_RADIO_REPLAYS]
+//                                                   cachePolicy:NSURLRequestReturnCacheDataElseLoad
+//                                               timeoutInterval:WEB_VIEW_CACHE_DURATION]];
+//
+//    self.freshnews_Wbv = [[UIWebView alloc] init];
+//    self.freshnews_Wbv.scrollView.bounces = NO;
+//    [self.freshnews_Wbv loadRequest:[NSURLRequest requestWithURL:
+//                                     [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_RIDER_RADIO_FRESHNEWS, [[NSLocale preferredLanguages] objectAtIndex:0]]]
+//                                                     cachePolicy:NSURLRequestReturnCacheDataElseLoad
+//                                                 timeoutInterval:WEB_VIEW_CACHE_DURATION]];
+
     if ([self isKindOfClass:MixesViewController.class]) {
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:URL_RIDER_RADIO_MIXES]
                                                    cachePolicy:NSURLRequestReturnCacheDataElseLoad
@@ -279,7 +297,7 @@
                                                 [imgView setImage:image];
                                             } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
                                                 NSLog(@"Failed:");
-                                                NSLog(@"%@", [[URL_RIDER_RADIO_CURRENT_SONG_JACKET stringByAppendingFormat:@"%@.jpg", mountsTitle] stringByReplacingOccurrencesOfString:@" " withString:@"%20"]);
+                                                NSLog(@"%@", [[URL_RIDER_RADIO_CURRENT_SONG_JACKET stringByAppendingFormat:@"%@%@", mountsTitle, CST_RIDER_RADIO_CURRENT_SONG_JACKET_EXT] stringByReplacingOccurrencesOfString:@" " withString:@"%20"]);
                                             }];
     
     // Save the current mount title
@@ -444,10 +462,10 @@
 - (void)shareCurrentMountsOnFacebook:(NSString *)mountsName
 {
     // Check if the Facebook app is installed and we can present the share dialog
-    FBLinkShareParams *params = [[FBLinkShareParams alloc] initWithLink:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", URL_RIDER_RADIO_SHARED_URL, [[NSLocale preferredLanguages] objectAtIndex:0]]]
+    FBLinkShareParams *params = [[FBLinkShareParams alloc] initWithLink:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", CST_RIDER_RADIO_SHARED_URL, [[NSLocale preferredLanguages] objectAtIndex:0]]]
                                                                    name:self.currentMountsTitle
-                                                                caption:URL_RIDER_RADIO_SHARE_LINK_CAPTION
-                                                            description:URL_RIDER_RADIO_SHARE_MESSAGE
+                                                                caption:CST_RIDER_RADIO_SHARE_LINK_CAPTION
+                                                            description:CST_RIDER_RADIO_SHARE_MESSAGE
                                                                 picture:[NSURL URLWithString:[[URL_RIDER_RADIO_CURRENT_SONG_JACKET stringByAppendingFormat:@"%@.jpg", self.currentMountsTitle] stringByReplacingOccurrencesOfString:@" " withString:@"%20"]]];
     
     // If the Facebook app is installed on the current device => share dialog
@@ -485,10 +503,10 @@
         // Present the feed dialog
         // Put together the dialog parameters
         NSMutableDictionary *mutDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                        URL_RIDER_RADIO_SHARED_URL, @"link",
+                                        CST_RIDER_RADIO_SHARED_URL, @"link",
                                         self.currentMountsTitle, @"name",
-                                        URL_RIDER_RADIO_SHARE_LINK_CAPTION, @"caption",
-                                        URL_RIDER_RADIO_SHARE_MESSAGE, @"description",
+                                        CST_RIDER_RADIO_SHARE_LINK_CAPTION, @"caption",
+                                        CST_RIDER_RADIO_SHARE_MESSAGE, @"description",
                                         [[URL_RIDER_RADIO_CURRENT_SONG_JACKET stringByAppendingFormat:@"%@.jpg", self.currentMountsTitle] stringByReplacingOccurrencesOfString:@" " withString:@"%20"], @"picture",
                                         nil];
         

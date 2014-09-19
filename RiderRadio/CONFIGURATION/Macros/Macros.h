@@ -113,8 +113,9 @@ typedef NS_ENUM(NSInteger, SectionName) {
 //====================================================================================================//
 //                                               Constant                                             //
 //====================================================================================================//
-#define URL_RIDER_RADIO_ERROR_MSG_IMG_NAME          @"MessageAppli_"
-#define URL_RIDER_RADIO_ERROR_MSG_IMG_EXT           @".png"
+#define CST_RIDER_RADIO_ERROR_MSG_IMG_NAME          @"MessageAppli_"
+#define CST_RIDER_RADIO_ERROR_MSG_IMG_EXT           @".png"
+#define CST_RIDER_RADIO_CURRENT_SONG_JACKET_EXT     @".jpg"
 #define WEB_VIEW_CACHE_DURATION                     60 * 5                              // 5 min
 
 
@@ -123,9 +124,9 @@ typedef NS_ENUM(NSInteger, SectionName) {
 //====================================================================================================//
 //                                                Sharing                                             //
 //====================================================================================================//
-#define URL_RIDER_RADIO_SHARED_URL                  (URL_RIDER_RADIO_FRESHNEWS)
-#define URL_RIDER_RADIO_SHARE_MESSAGE               @"#NP sur @Rider_Radio"
-#define URL_RIDER_RADIO_SHARE_LINK_CAPTION          @"RiderRadio"
+#define CST_RIDER_RADIO_SHARED_URL                  (URL_RIDER_RADIO_FRESHNEWS)
+#define CST_RIDER_RADIO_SHARE_MESSAGE               @"#NP sur @Rider_Radio"
+#define CST_RIDER_RADIO_SHARE_LINK_CAPTION          @"RiderRadio"
 
 
 

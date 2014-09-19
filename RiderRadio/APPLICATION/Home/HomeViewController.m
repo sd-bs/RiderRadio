@@ -122,16 +122,16 @@
     if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] == YES && [[UIScreen mainScreen] scale] == 2.00) {
         // It's iPhone 5
         if ([[UIScreen mainScreen] bounds].size.height > 460) {
-            self.errorFluxMessageURL_Str = [NSString stringWithFormat:@"%@%@%@-568h@2x%@", URL_RIDER_RADIO_ERROR_MESSAGE_FLUX, URL_RIDER_RADIO_ERROR_MSG_IMG_NAME, [[NSLocale preferredLanguages] objectAtIndex:0], URL_RIDER_RADIO_ERROR_MSG_IMG_EXT];
+            self.errorFluxMessageURL_Str = [NSString stringWithFormat:@"%@%@%@-568h@2x%@", URL_RIDER_RADIO_ERROR_MESSAGE_FLUX, CST_RIDER_RADIO_ERROR_MSG_IMG_NAME, [[NSLocale preferredLanguages] objectAtIndex:0], CST_RIDER_RADIO_ERROR_MSG_IMG_EXT];
         }
         // It's iPhone 4 or 4s
         else {
-            self.errorFluxMessageURL_Str  = [NSString stringWithFormat:@"%@%@%@@2x%@", URL_RIDER_RADIO_ERROR_MESSAGE_FLUX, URL_RIDER_RADIO_ERROR_MSG_IMG_NAME, [[NSLocale preferredLanguages] objectAtIndex:0], URL_RIDER_RADIO_ERROR_MSG_IMG_EXT];
+            self.errorFluxMessageURL_Str  = [NSString stringWithFormat:@"%@%@%@@2x%@", URL_RIDER_RADIO_ERROR_MESSAGE_FLUX, CST_RIDER_RADIO_ERROR_MSG_IMG_NAME, [[NSLocale preferredLanguages] objectAtIndex:0], CST_RIDER_RADIO_ERROR_MSG_IMG_EXT];
         }
     }
     // It's normal display
     else {
-        self.errorFluxMessageURL_Str  = [NSString stringWithFormat:@"%@%@%@%@", URL_RIDER_RADIO_ERROR_MESSAGE_FLUX, URL_RIDER_RADIO_ERROR_MSG_IMG_NAME, [[NSLocale preferredLanguages] objectAtIndex:0], URL_RIDER_RADIO_ERROR_MSG_IMG_EXT];
+        self.errorFluxMessageURL_Str  = [NSString stringWithFormat:@"%@%@%@%@", URL_RIDER_RADIO_ERROR_MESSAGE_FLUX, CST_RIDER_RADIO_ERROR_MSG_IMG_NAME, [[NSLocale preferredLanguages] objectAtIndex:0], CST_RIDER_RADIO_ERROR_MSG_IMG_EXT];
     }
 }
 
@@ -171,14 +171,17 @@
             
         case Mixes:
         {
+//            MixesViewController *mixesVC = [[MixesViewController alloc] initOnPaused:self.playerIsPaused withWebView:self.mixes_Wbv];
             MixesViewController *mixesVC = [[MixesViewController alloc] initOnPaused:self.playerIsPaused];
             [mixesVC setPlayer:self.player];
+            [mixesVC setParentVC:self];
             [self.navigationController pushViewController:mixesVC animated:YES];
             break;
         }
             
         case Replays:
         {
+//            ReplaysViewController *replaysVC = [[ReplaysViewController alloc] initOnPaused:self.playerIsPaused withWebView:self.replays_Wbv];
             ReplaysViewController *replaysVC = [[ReplaysViewController alloc] initOnPaused:self.playerIsPaused];
             [replaysVC setPlayer:self.player];
             [replaysVC setParentVC:self];
@@ -188,6 +191,7 @@
             
         case Fresh_news:
         {
+//            FreshnewsViewController *freshnewsVC = [[FreshnewsViewController alloc] initOnPaused:self.playerIsPaused withWebView:self.freshnews_Wbv];
             FreshnewsViewController *freshnewsVC = [[FreshnewsViewController alloc] initOnPaused:self.playerIsPaused];
             [freshnewsVC setPlayer:self.player];
             [freshnewsVC setParentVC:self];

@@ -23,6 +23,10 @@
 //@property (nonatomic, strong) IBOutlet UIView                       *backing_View;
 @property (strong, nonatomic) IBOutlet UIButton                     *back_Btn;
 @property (strong, nonatomic) IBOutlet UIWebView                    *webView;
+//@property (strong, nonatomic) UIWebView                    *webView_init;
+//@property (strong, nonatomic) IBOutlet UIWebView                    *mixes_Wbv;
+//@property (strong, nonatomic) IBOutlet UIWebView                    *replays_Wbv;
+//@property (strong, nonatomic) IBOutlet UIWebView                    *freshnews_Wbv;
 @property (strong, nonatomic) IBOutlet UIView                       *aivBackground;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView      *aiv;
 // Player components
