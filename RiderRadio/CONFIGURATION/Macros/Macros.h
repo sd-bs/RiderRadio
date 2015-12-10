@@ -56,7 +56,7 @@
 //====================================================================================================//
 //                                                 Enums                                              //
 //====================================================================================================//
-typedef NS_ENUM(NSInteger, SectionName) {
+typedef NS_ENUM (NSInteger, SectionName) {
     On_Air,
     Mixes,
     Replays,
@@ -93,16 +93,20 @@ typedef NS_ENUM(NSInteger, SectionName) {
 //                                                 URLs                                               //
 //====================================================================================================//
 // ON AIR (new)
-#define URL_RIDER_RADIO_STREAMING_FLUX_WINAMP       @"http://manager3.radioking.fr/tunein/riderrad.pls"
-#define URL_RIDER_RADIO_CURRENT_SONG_INFO           @"http://37.58.75.166:8684/currentsong?sid=1"
+//#define URL_RIDER_RADIO_STREAMING_FLUX_WINAMP       @"http://manager3.radioking.fr/tunein/riderrad.pls"
+#define URL_RIDER_RADIO_STREAMING_FLUX_WINAMP       @"https://www.radioking.fr/play/riderradio"
+//#define URL_RIDER_RADIO_CURRENT_SONG_INFO           @"http://37.58.75.166:8684/currentsong?sid=1"
+#define URL_RIDER_RADIO_CURRENT_SONG_INFO           @"https://www.radioking.fr/widgets/currenttrack.php?radio=3230&format=text"
 #define URL_RIDER_RADIO_CURRENT_SONG_JACKET         @"http://www.rider-radio.com/visuels/"
 #define URL_RIDER_RADIO_ERROR_MESSAGE_FLUX          @"http://www.rider-radio.com/appli/"
 
 // MIXES
-#define URL_RIDER_RADIO_MIXES                       @"https://soundcloud.com/riderradio"
+//#define URL_RIDER_RADIO_MIXES                       @"https://soundcloud.com/riderradio"
+#define URL_RIDER_RADIO_MIXES                       @"https://www.mixcloud.com/RiderRadio/"
 
 // REPLAYS
-#define URL_RIDER_RADIO_REPLAYS                     @"http://www.rider-radio.com/rider-live-sessions-mobile/"
+//#define URL_RIDER_RADIO_REPLAYS                     @"http://www.rider-radio.com/rider-live-sessions-mobile/"
+#define URL_RIDER_RADIO_REPLAYS                     @"https://www.youtube.com/user/RiderRadioTV"
 
 // FRESHNEWS
 #define URL_RIDER_RADIO_FRESHNEWS                   @"http://www.rider-radio.com/?lang="
